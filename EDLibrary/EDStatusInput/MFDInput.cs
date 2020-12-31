@@ -43,12 +43,24 @@ namespace EDLibrary.EDStatusInput
             bool[] currentState = mfd.GetCurrentState().Buttons;
             for (int i = 0; i < currentState.Length; i++)
             {
-                if (buttonState[i] != currentState[i])
+                if ((i >= 0 && i <= 19) ||( i >= 26 && i <= 27)) // Menu Buttons
                 {
-                    buttonState[i] = !buttonState[i];
-                    if (ButtonPressed != null && buttonState[i]) ButtonPressed.Invoke(this, new MFDButtonEventArgs { Button = new MFDButton { ButtonNum = i } });
-                    if (ButtonReleased != null && !buttonState[i]) ButtonReleased.Invoke(this, new MFDButtonEventArgs { Button = new MFDButton { ButtonNum = i } });
+                    if (buttonState[i] != currentState[i])
+                    {
+                        buttonState[i] = !buttonState[i];
+                        if (ButtonPressed != null && buttonState[i]) ButtonPressed.Invoke(this, new MFDButtonEventArgs { Button = new MFDButton { ButtonNum = i } });
+                        if (ButtonReleased != null && !buttonState[i]) ButtonReleased.Invoke(this, new MFDButtonEventArgs { Button = new MFDButton { ButtonNum = i } });
+                    }
                 }
+
+                if(i >= 20 && i<= 25) //Panel Config
+                {
+                    if (buttonState[i] != currentState[i])
+                    {
+                        buttonState[i] = !buttonState[i];
+                        if (MenuOptionPressed != null && buttonState[i]) MenuOptionPressed.Invoke(this, new MFDMenuButtonEventArgs { ButtonType = (MenuButtonTypes)i });
+                    }
+                }                           
             }
         }
 
@@ -82,6 +94,8 @@ namespace EDLibrary.EDStatusInput
         public event EventHandler<MFDButtonEventArgs> ButtonPressed;
         
         public event EventHandler<MFDButtonEventArgs> ButtonReleased;
+
+        public event EventHandler<MFDMenuButtonEventArgs> MenuOptionPressed;
 
     }
 }

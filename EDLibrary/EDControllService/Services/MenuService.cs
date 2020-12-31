@@ -30,7 +30,8 @@ namespace EDLibrary.EDControllService.Services
             {
                 if (e.AssignedInput.Equals(origin))
                 {
-                    commands.Add(CommandFactory.CommandFactory.Instance.getCommand(e.Menu.ButtonClick(position)));
+                    Command cmd = CommandFactory.CommandFactory.Instance.getCommand(e.Menu.ButtonClick(position));
+                    if(cmd != null) commands.Add(cmd);
                 }
             });
             return commands;

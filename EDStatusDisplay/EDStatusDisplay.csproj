@@ -7,6 +7,10 @@
     <StartupObject>EDStatusDisplay.App</StartupObject>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\EDLibrary\EDLibrary.csproj" />
   </ItemGroup>

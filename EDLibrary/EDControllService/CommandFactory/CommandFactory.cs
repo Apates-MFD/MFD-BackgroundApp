@@ -15,6 +15,7 @@ namespace EDLibrary.EDControllService.CommandFactory
 
         public Command getCommand(SerializableCommand serialized)
         {
+            if (serialized == null) return null;
             dynamic command = null;
 
             switch (commandTypeMap[Type.GetType(serialized.CommandType)])

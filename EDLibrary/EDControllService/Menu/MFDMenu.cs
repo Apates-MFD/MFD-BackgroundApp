@@ -15,7 +15,7 @@ namespace EDLibrary.EDControllService.Menu
         public SerializableCommand ButtonClick(int position)
         {
             MenuItem item = MenuItems.Find(e => e.Position == position);
-            if (item == null) throw new ArgumentException("Poistion not valid");
+            if (item == null) return null;
             return item.Command;
         }
 

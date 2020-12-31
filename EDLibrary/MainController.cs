@@ -9,7 +9,7 @@ namespace EDLibrary
 {
     public class MainController
     {
-
+        private Dictionary<MFDType, UI.IPanel> activePanels = new Dictionary<MFDType, UI.IPanel>();
         private void init()
         {
             _ = FileService.Instance;
@@ -18,6 +18,7 @@ namespace EDLibrary
 
             InputService.Instance.ReadMFD(MFDType.MFD_TWO);
             InputService.Instance.EventAction("+=", "ButtonReleased", MFDType.MFD_TWO, ButtonReleased);
+            InputService.Instance.MenuEventAction("+=", MFDType.MFD_TWO, MenuOptionPressed);
 
             if (!Directory.Exists("menus//")) throw new Exception("Menu folder not found");
 
@@ -33,9 +34,19 @@ namespace EDLibrary
         public void AssignPanel(UI.IPanel panel, MFDType joystick)
         {
             MenuService.Instance.AssignPanel(panel, joystick);
+            activePanels.Add(joystick, panel);
         }
 
-        private static void ButtonReleased(object sender, MFDButtonEventArgs e)
+        private void MenuOptionPressed(object sender, MFDMenuButtonEventArgs e)
+        {          
+            MFDInput input = (MFDInput)sender;
+            UI.IPanel panel = activePanels[input.SelectedMFD];
+            if(panel != null)
+            {
+
+            }
+        }
+        private void ButtonReleased(object sender, MFDButtonEventArgs e)
         {
             List<Command> commands = MenuService.Instance.ForwardButtonClick(e.Button.ButtonNum, ((MFDInput)sender).SelectedMFD);
 

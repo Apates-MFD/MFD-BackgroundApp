@@ -14,7 +14,6 @@ namespace EDStatusDisplay
         {
             base.OnStartup(e);
             Debug.WriteLine("Hellow");
-            
         }
 
         protected override void OnExit(ExitEventArgs e)

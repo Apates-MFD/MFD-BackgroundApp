@@ -14,12 +14,19 @@ namespace EDLibrary.EDControllService.Services
             MFDInput input = inputs.Find(e => e.SelectedMFD.Equals(origin));
             if (input == null) throw new ArgumentException("MFD Input not aquierd");
                          
-            if (_type == "+=" && _event == "ButtonPressed")  input.ButtonPressed  += handler;
-            if (_type == "+=" && _event == "ButtonReleased") input.ButtonReleased += handler;
-            if (_type == "-=" && _event == "ButtonPressed")  input.ButtonPressed  -= handler;
-            if (_type == "-=" && _event == "ButtonReleased") input.ButtonReleased += handler;    
+            if (_type == "+=" && _event == "ButtonPressed")     input.ButtonPressed     += handler;
+            if (_type == "+=" && _event == "ButtonReleased")    input.ButtonReleased    += handler;          
+            if (_type == "-=" && _event == "ButtonPressed")     input.ButtonPressed     -= handler;
+            if (_type == "-=" && _event == "ButtonReleased")    input.ButtonReleased    -= handler;          
         }
 
+        public void MenuEventAction(string _type, MFDType origin, EventHandler<MFDMenuButtonEventArgs> handler)
+        {
+            MFDInput input = inputs.Find(e => e.SelectedMFD.Equals(origin));
+            if (input == null) throw new ArgumentException("MFD Input not aquierd");
+            if (_type == "+=") input.MenuOptionPressed += handler;
+            if (_type == "-=") input.MenuOptionPressed -= handler;
+        }
         public bool ReadMFD(MFDType type)
         {
             if (inputs.Find(e => e.SelectedMFD.Equals(type)) != null) return true;

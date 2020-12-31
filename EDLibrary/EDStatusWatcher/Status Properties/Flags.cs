@@ -19,7 +19,7 @@
         SRV_TURRET_RETRACTED = (1 << 14),
         SRV_DRIVEASSIS = (1 << 15),
         FSD_MASSLOCKED = (1 << 16),
-        PSD_CHARGING = (1 << 17),
+        FSD_CHARGING = (1 << 17),
         FSD_COOLDOWN = (1 << 18),
         LOW_FUEL_25 = (1 << 19),
         OVER_HEARTING_100 = (1 << 20),
