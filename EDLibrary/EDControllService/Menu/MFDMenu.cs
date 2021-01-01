@@ -36,7 +36,14 @@ namespace EDLibrary.EDControllService.Menu
                if (e.LinkedProperty == property)
                {
                    e.State = state;
-                   if (panel != null) panel.InvertStateThreadSafe(e.Position);
+                   if (panel != null)
+                   {
+                       new ModifyPanelCommand() { 
+                           Panel = panel,
+                           ChangeType = ModifyPanelChangeType.SETINVERTED, 
+                           Parameter = state, Position = e.Position 
+                       }.Execute();
+                   }
                }
            });
         }
@@ -44,9 +51,23 @@ namespace EDLibrary.EDControllService.Menu
         public void SetPanel(IPanel panel)
         {
             this.panel = panel;
-            MenuItems.ForEach(e => panel.SetTextThreadSafe(e.Position, e.DisplayText, e.DisplayText.Equals(this.MenuInfo.MenuText) ? true : e.State));        
+            MenuItems.ForEach(e => {
+                new ModifyPanelCommand()
+                {
+                    Panel = panel,
+                    ChangeType = ModifyPanelChangeType.SETTEXT,
+                    Parameter = e.DisplayText,
+                    Position = e.Position
+                }.Execute();
+                new ModifyPanelCommand()
+                {
+                    Panel = panel,
+                    ChangeType = ModifyPanelChangeType.SETINVERTED,
+                    Parameter = e.DisplayText.Equals(this.MenuInfo.MenuText) ? true : e.State,
+                    Position = e.Position
+                }.Execute();
+            });        
         }
-
         public IPanel GetPanel()
         {
             return panel;

@@ -1,6 +1,6 @@
 ﻿namespace EDLibrary.EDControllService.CommandFactory
 {
-    public interface Command
+    public interface ICommand
     {
         public abstract void Execute();
     }

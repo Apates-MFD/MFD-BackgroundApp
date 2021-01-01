@@ -3,7 +3,7 @@ using System;
 
 namespace EDLibrary.EDControllService.CommandFactory
 {
-    public class InGameCommand : Command
+    public class InGameCommand : ICommand
     {
         public Actions Action { get; set; }
 

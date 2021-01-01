@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EDLibrary.EDControllService.CommandFactory
 {
-    public class CommandFactory
+    public class Factory
     {
         private Dictionary<Type, commandTypes> commandTypeMap = new Dictionary<Type, commandTypes>();
         private enum commandTypes
@@ -13,7 +13,7 @@ namespace EDLibrary.EDControllService.CommandFactory
             CHANGE_MENU
         }
 
-        public Command getCommand(SerializableCommand serialized)
+        public ICommand getCommand(SerializableCommand serialized)
         {
             if (serialized == null) return null;
             dynamic command = null;
@@ -41,15 +41,15 @@ namespace EDLibrary.EDControllService.CommandFactory
         }
 
         #region Singelton
-        private static readonly CommandFactory instance = new CommandFactory();
+        private static readonly Factory instance = new Factory();
 
-        private CommandFactory()
+        private Factory()
         {
             //Populate commandTypeMap
             commandTypeMap.Add(typeof(InGameCommand), commandTypes.IN_GAME);
             commandTypeMap.Add(typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU);
         }
-        public static CommandFactory Instance
+        public static Factory Instance
         {
             get
             {

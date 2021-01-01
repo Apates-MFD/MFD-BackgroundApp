@@ -3,7 +3,7 @@ using System;
 
 namespace EDLibrary.EDControllService.CommandFactory
 {
-    public class ChangeMenuCommand : Command
+    public class ChangeMenuCommand : ICommand
     {
         public string MenuName { get; set; }
         public string Caller { get; set; }

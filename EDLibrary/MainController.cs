@@ -28,7 +28,7 @@ namespace EDLibrary
                 MenuService.Instance.LoadMenu(menupath);
             }
 
-            MenuService.Instance.EnableMenu("MEN1", MFDType.MFD_TWO);
+            MenuService.Instance.EnableMenu("MAINMENU", MFDType.MFD_TWO);
         }
         
         public void AssignPanel(UI.IPanel panel, MFDType joystick)
@@ -43,22 +43,17 @@ namespace EDLibrary
             UI.IPanel panel = activePanels[input.SelectedMFD];
             if(panel != null)
             {
-
+                //TODO Implement Brightness, Contrasst & Symbology
             }
         }
         private void ButtonReleased(object sender, MFDButtonEventArgs e)
         {
-            List<Command> commands = MenuService.Instance.ForwardButtonClick(e.Button.ButtonNum, ((MFDInput)sender).SelectedMFD);
+            ICommand command = MenuService.Instance.ForwardButtonClick(e.Button.ButtonNum, ((MFDInput)sender).SelectedMFD);           
 
-            if (commands.Count >= 2)
+            if (command != null)
             {
-                throw new Exception("Multiple Menus listen on same device. Too many choices");
-            }
-
-            if (commands.Count == 1)
-            {
-                //As of now, just execute but if there are combinations uf key releases this needs to be changed
-                commands[0].Execute();
+                //As of now, just execute but if there are combinations of key releases this needs to be changed
+                command.Execute();
             }
         }
         public void Quit()

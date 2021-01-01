@@ -22,28 +22,31 @@ namespace EDLibrary.EDControllService.Services
             }
         }
 
-        public List<Command> ForwardButtonClick(int position, MFDType origin)
+        public ICommand ForwardButtonClick(int position, MFDType origin)
         {
-            List<Command> commands = new List<Command>();
+            List<ICommand> commands = new List<ICommand>();
 
             activeMenus.ForEach(e =>
             {
                 if (e.AssignedInput.Equals(origin))
                 {
-                    Command cmd = CommandFactory.CommandFactory.Instance.getCommand(e.Menu.ButtonClick(position));
+                    ICommand cmd = Factory.Instance.getCommand(e.Menu.ButtonClick(position));
                     if(cmd != null) commands.Add(cmd);
                 }
             });
-            return commands;
+            if (commands.Count > 1) throw new Exception("Multiple Menus answered to click");
+            if (commands.Count == 0) return null;
+            return commands[0];
         }
 
         public void EnableMenu(string menuName, MFDType input)
         {
-            if (activeMenus.Find(e => e.Menu.MenuInfo.MenuText == menuName) != null) return;
+            if (activeMenus.Find(e => e.Menu.MenuInfo.MenuText == menuName || e.AssignedInput.Equals(input)) != null) return;
 
+            
             MFDMenu menu = loadedMenus.Find(e => e.MenuInfo.MenuText == menuName);
 
-            if (menu == null) throw new ArgumentException("menu not found");
+            if (menu == null) throw new ArgumentException("Menu not found");
 
             List<string> list = menu.getLinkedProperties();
             foreach (string property in list)
@@ -88,7 +91,7 @@ namespace EDLibrary.EDControllService.Services
                 FileService.Instance.UnsubscribteTo(property, propertiesCallback);
             }
             IPanel panel = menu.GetPanel();
-            if (panel != null) panel.ClearThreadSafe();
+            if (panel != null) new ModifyPanelCommand() { Panel = panel, ChangeType =  ModifyPanelChangeType.CLEAR }.Execute();
             activeMenus.RemoveAll(e => e.Menu == menu);
         }
 

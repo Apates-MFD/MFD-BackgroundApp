@@ -49,52 +49,46 @@ namespace EDStatusDisplay
         #endregion
 
         private TextBlock[] buttonTexts;
-
-        public void Clear()
+        private static new Brush Foreground = Brushes.Lime;
+        private static new Brush Background = Brushes.Black;
+        private void clear()
         {
             foreach(TextBlock block in buttonTexts)
             {
-                block.Foreground = Brushes.Lime;
-                block.Background = Brushes.Black;
+                block.Foreground = Foreground;
+                block.Background = Background;
                 block.Text = "";
+                block.Opacity = 1.0;
             }
         }
-        public void InvertState(int position)
-        {
-            textBlockInvert(buttonTexts[position]);
-        }
 
-        public void SetText(int position, string text, bool invert)
-        {
-            buttonTexts[position].Text = text;
-            if (invert) textBlockInvert(buttonTexts[position]);
-        }
-            
-        private void textBlockInvert(TextBlock block)
-        {
-            Brush tmp = block.Foreground;
-            block.Foreground = block.Background;
-            block.Background = tmp;
-        }
 
-        public void SetTextThreadSafe(int position, string text, bool invert)
+        public void Clear()
         {
-            this.Dispatcher.Invoke(new Action(() =>{
-                this.SetText(position, text, invert);         
-           }));
-        }
-
-        public void InvertStateThreadSafe(int position)
-        {
-            this.Dispatcher.Invoke(new Action(() => {
-                this.InvertState(position);
+            Dispatcher.Invoke(new Action(() => {
+                this.clear();
             }));
         }
 
-        public void ClearThreadSafe()
+        public void SetInverted(int position, bool inverted)
         {
-            this.Dispatcher.Invoke(new Action(() => {
-                this.Clear();
+            Dispatcher.Invoke(new Action(() => {
+                buttonTexts[position].Foreground = inverted ? Background : Foreground;
+                buttonTexts[position].Foreground = inverted ? Foreground : Background;
+            }));
+        }
+
+        public void SetText(int position, string text)
+        {
+            Dispatcher.Invoke(new Action(() => {
+                buttonTexts[position].Text = text;
+            }));
+        }
+
+        public void SetEnabled(int position, bool enabled)
+        {
+            Dispatcher.Invoke(new Action(() => {
+                buttonTexts[position].Opacity = enabled ? 1.0 : 0.0;
             }));
         }
     }
