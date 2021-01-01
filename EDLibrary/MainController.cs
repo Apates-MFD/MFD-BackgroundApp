@@ -1,6 +1,6 @@
 ﻿using EDLibrary.EDControllService.CommandFactory;
 using EDLibrary.EDControllService.Services;
-using EDLibrary.EDStatusInput;
+using EDLibrary.ControllInput;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,16 +9,16 @@ namespace EDLibrary
 {
     public class MainController
     {
-        private Dictionary<MFDType, UI.IPanel> activePanels = new Dictionary<MFDType, UI.IPanel>();
+        private Dictionary<InputDeviceNames, UI.IPanel> activePanels = new Dictionary<InputDeviceNames, UI.IPanel>();
         private void init()
         {
             _ = FileService.Instance;
             _ = InputService.Instance;
             _ = MenuService.Instance;
 
-            InputService.Instance.ReadMFD(MFDType.MFD_TWO);
-            InputService.Instance.EventAction("+=", "ButtonReleased", MFDType.MFD_TWO, ButtonReleased);
-            InputService.Instance.MenuEventAction("+=", MFDType.MFD_TWO, MenuOptionPressed);
+            InputService.Instance.ReadMFD(InputDeviceNames.MFD_TWO);
+            InputService.Instance.EventAction("+=", "ButtonReleased", InputDeviceNames.MFD_TWO, ButtonReleased);
+          //  InputService.Instance.MenuEventAction("+=", InputDeviceNames.MFD_TWO, MenuOptionPressed);
 
             if (!Directory.Exists("menus//")) throw new Exception("Menu folder not found");
 
@@ -28,27 +28,27 @@ namespace EDLibrary
                 MenuService.Instance.LoadMenu(menupath);
             }
 
-            MenuService.Instance.EnableMenu("MAINMENU", MFDType.MFD_TWO);
+            MenuService.Instance.EnableMenu("MAINMENU", InputDeviceNames.MFD_TWO);
         }
         
-        public void AssignPanel(UI.IPanel panel, MFDType joystick)
+        public void AssignPanel(UI.IPanel panel, InputDeviceNames joystick)
         {
             MenuService.Instance.AssignPanel(panel, joystick);
             activePanels.Add(joystick, panel);
         }
 
-        private void MenuOptionPressed(object sender, MFDMenuButtonEventArgs e)
+        /*private void MenuOptionPressed(object sender, MFDMenuButtonEventArgs e)
         {          
-            MFDInput input = (MFDInput)sender;
-            UI.IPanel panel = activePanels[input.SelectedMFD];
+            InputDevice input = (InputDevice)sender;
+            UI.IPanel panel = activePanels[input.InputDeviceName];
             if(panel != null)
             {
                 //TODO Implement Brightness, Contrasst & Symbology
             }
-        }
-        private void ButtonReleased(object sender, MFDButtonEventArgs e)
+        }*/
+        private void ButtonReleased(object sender, InputEventArgs e)
         {
-            ICommand command = MenuService.Instance.ForwardButtonClick(e.Button.ButtonNum, ((MFDInput)sender).SelectedMFD);           
+            ICommand command = MenuService.Instance.ForwardButtonClick(e.Button.ButtonNum, ((InputDevice)sender).InputDeviceName);           
 
             if (command != null)
             {

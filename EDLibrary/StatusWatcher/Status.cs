@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace EDLibrary.EDStatusWatcher
+namespace EDLibrary.StatusWatcher
 {
     /// <summary>
     /// Singelton Status Instance with up to date information
     /// </summary>
     
-
     public class Status : INotifyPropertyChanged
     {
 
@@ -58,6 +57,10 @@ namespace EDLibrary.EDStatusWatcher
         public bool FSD_JUMP { get; set; }
         public bool SRV_HIGH_BEAM { get; set; }
 
+        /// <summary>
+        /// Updates all Propertiesa
+        /// </summary>
+        /// <param name="statusUpdate"></param>
         public void updateStatus(SerializeableStatus statusUpdate)
         {
             setProperty(new Pips(statusUpdate.Pips), this.Pips, nameof(this.Pips));
@@ -91,6 +94,14 @@ namespace EDLibrary.EDStatusWatcher
                 setProperty(LegalState.NULL, this.LegalState, nameof(this.LegalState));
             }
         }
+
+        /// <summary>
+        /// Helper Method to setProperty and invoke event if property has changed.
+        /// </summary>
+        /// <typeparam name="T">Type of property</typeparam>
+        /// <param name="newProp">Updated Property</param>
+        /// <param name="oldProp">Old Property</param>
+        /// <param name="name">Name of Property</param>
         private void setProperty<T>(T newProp, T oldProp, string name)
         {
 
@@ -137,6 +148,11 @@ namespace EDLibrary.EDStatusWatcher
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invokes eventhandlers
+        /// </summary>
+        /// <param name="propertyName"></param>
         private void propertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)

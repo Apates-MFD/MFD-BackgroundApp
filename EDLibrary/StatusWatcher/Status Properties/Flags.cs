@@ -1,5 +1,8 @@
-﻿namespace EDLibrary.EDStatusWatcher
+﻿namespace EDLibrary.StatusWatcher
 {
+    /// <summary>
+    /// All Flags from Status files
+    /// </summary>
     public enum Flags
     {
         DOCKED_LANDINGPAD = (1 << 0),

@@ -1,6 +1,6 @@
 ﻿using EDLibrary.EDControllService.CommandFactory;
 using EDLibrary.EDControllService.Menu;
-using EDLibrary.EDStatusInput;
+using EDLibrary.ControllInput;
 using EDLibrary.UI;
 using System;
 using System.Collections.Generic;
@@ -18,11 +18,11 @@ namespace EDLibrary.EDControllService.Services
             foreach (ActiveMenuInfo menuInfo in activeMenus)
             {
                 if (!info.PropertyType.Equals(typeof(bool))) throw new Exception("Property is not boolean. Only booleans are accepted for button states.");
-                menuInfo.Menu.UpdateState(info.Name, (bool)info.GetValue(EDStatusWatcher.Status.Instance));
+                menuInfo.Menu.UpdateState(info.Name, (bool)info.GetValue(StatusWatcher.Status.Instance));
             }
         }
 
-        public ICommand ForwardButtonClick(int position, MFDType origin)
+        public ICommand ForwardButtonClick(int position, InputDeviceNames origin)
         {
             List<ICommand> commands = new List<ICommand>();
 
@@ -39,7 +39,7 @@ namespace EDLibrary.EDControllService.Services
             return commands[0];
         }
 
-        public void EnableMenu(string menuName, MFDType input)
+        public void EnableMenu(string menuName, InputDeviceNames input)
         {
             if (activeMenus.Find(e => e.Menu.MenuInfo.MenuText == menuName || e.AssignedInput.Equals(input)) != null) return;
 
@@ -68,7 +68,7 @@ namespace EDLibrary.EDControllService.Services
             EnableMenu(newM, menuInfo.AssignedInput);
             AssignPanel(menuInfo.Menu.GetPanel(), menuInfo.AssignedInput);
         }
-        public void AssignPanel(IPanel panel, MFDType type)
+        public void AssignPanel(IPanel panel, InputDeviceNames type)
         {
             ActiveMenuInfo info = activeMenus.Find(e => e.AssignedInput.Equals(type));
             if(info != null)

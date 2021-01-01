@@ -1,5 +1,5 @@
 ﻿using EDLibrary;
-using EDLibrary.EDStatusInput;
+using EDLibrary.ControllInput;
 using System.Diagnostics;
 using System.Windows;
 

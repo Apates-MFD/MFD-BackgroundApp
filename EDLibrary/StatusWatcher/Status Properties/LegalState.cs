@@ -1,5 +1,8 @@
-﻿namespace EDLibrary.EDStatusWatcher
+﻿namespace EDLibrary.StatusWatcher
 {
+    /// <summary>
+    /// All possible legal states of Elite Dangerous
+    /// </summary>
     public enum LegalState
     {
         NULL,

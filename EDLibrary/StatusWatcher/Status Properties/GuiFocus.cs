@@ -1,5 +1,8 @@
-﻿namespace EDLibrary.EDStatusWatcher
+﻿namespace EDLibrary.StatusWatcher
 {
+    /// <summary>
+    /// All possible menu focuses of Elite Dangerous
+    /// </summary>
     public enum GuiFocus
     {
         NO_FOCUS,

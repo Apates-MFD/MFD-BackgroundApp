@@ -4,13 +4,16 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 
-namespace EDLibrary.EDStatusWatcher
+namespace EDLibrary.StatusWatcher
 {
     /// <summary>
     /// Parses Json file
     /// </summary>
     class StatusParser
     {
+        /// <summary>
+        /// Parsing Method
+        /// </summary>
         public static void Parse()
         {
             using (FileStream fileStream = File.Open(Constants.PathToStatus, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))

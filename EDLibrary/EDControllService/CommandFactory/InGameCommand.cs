@@ -11,7 +11,7 @@ namespace EDLibrary.EDControllService.CommandFactory
         {
             if (Action == Actions.NULL) throw new ArgumentNullException("Action cannot be null");
 
-            EDOutput.Keyboard.Execute(Action);
+            Output.Keyboard.Execute(Action);
         }
     }
 }

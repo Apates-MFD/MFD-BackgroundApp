@@ -1,4 +1,4 @@
-﻿using EDLibrary.EDStatusInput;
+﻿using EDLibrary.ControllInput;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,11 +7,11 @@ namespace EDLibrary.EDControllService.Services
 {
     public class InputService : Service
     {
-        private List<MFDInput> inputs = new List<MFDInput>();     
+        private List<InputDevice> inputs = new List<InputDevice>();     
 
-        public void EventAction(string _type, string _event, MFDType origin, EventHandler<MFDButtonEventArgs> handler)
+        public void EventAction(string _type, string _event, InputDeviceNames origin, EventHandler<InputEventArgs> handler)
         {
-            MFDInput input = inputs.Find(e => e.SelectedMFD.Equals(origin));
+            InputDevice input = inputs.Find(e => e.InputDeviceName.Equals(origin));
             if (input == null) throw new ArgumentException("MFD Input not aquierd");
                          
             if (_type == "+=" && _event == "ButtonPressed")     input.ButtonPressed     += handler;
@@ -20,20 +20,20 @@ namespace EDLibrary.EDControllService.Services
             if (_type == "-=" && _event == "ButtonReleased")    input.ButtonReleased    -= handler;          
         }
 
-        public void MenuEventAction(string _type, MFDType origin, EventHandler<MFDMenuButtonEventArgs> handler)
+        /*public void MenuEventAction(string _type, InputDeviceNames origin, EventHandler<MFDMenuButtonEventArgs> handler)
         {
-            MFDInput input = inputs.Find(e => e.SelectedMFD.Equals(origin));
+            InputDevice input = inputs.Find(e => e.InputDeviceName.Equals(origin));
             if (input == null) throw new ArgumentException("MFD Input not aquierd");
             if (_type == "+=") input.MenuOptionPressed += handler;
             if (_type == "-=") input.MenuOptionPressed -= handler;
-        }
-        public bool ReadMFD(MFDType type)
+        }*/
+        public bool ReadMFD(InputDeviceNames type)
         {
-            if (inputs.Find(e => e.SelectedMFD.Equals(type)) != null) return true;
+            if (inputs.Find(e => e.InputDeviceName.Equals(type)) != null) return true;
 
             try
             {
-                MFDInput input = new MFDInput(type);
+                InputDevice input = new InputDevice(type);
                 inputs.Add(input);
                 new Thread(new ThreadStart(input.Observe)).Start();
             }
@@ -45,7 +45,7 @@ namespace EDLibrary.EDControllService.Services
         }
         public void Quit()
         {
-            foreach (MFDInput i in inputs)
+            foreach (InputDevice i in inputs)
             {
                 i.Stop();
             }

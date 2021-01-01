@@ -1,5 +1,5 @@
 ﻿using EDLibrary;
-using EDLibrary.EDStatusInput;
+using EDLibrary.ControllInput;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,21 +17,12 @@ namespace EDStatusDisplay
 
         private void btnSpawnMFD_Click(object sender, RoutedEventArgs e)
         {
-            _ = MFD_TWO.Instance;
-            _ = MainController.Instance;
-            MainController.Instance.AssignPanel(MFD_TWO.Instance, MFDType.MFD_TWO);
-            MFD_TWO.Instance.Show();
-        }
-
-        private void btnToggle_Click(object sender, RoutedEventArgs e)
-        {
-         
+            InputDevice device = new InputDevice(InputDeviceNames.MFD_TWO);
+            device.Observe();
         }
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            MFD_TWO.Instance.Close();
-            MainController.Instance.Quit();
             base.OnClosing(e);
         }
     }

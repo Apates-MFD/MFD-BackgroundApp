@@ -1,13 +1,21 @@
 ﻿using System;
 
-namespace EDLibrary.EDStatusWatcher
+namespace EDLibrary.StatusWatcher
 {
+    /// <summary>
+    /// Fuel Class for Elite Dangerous
+    /// </summary>
     [Serializable]
     public class Fuel
     {
         public double FuelMain { get; set; }
         public double FuelReservoir { get; set; }
 
+        /// <summary>
+        /// Overriden Equals method
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns><see langword="false"/> if tpye or fuel values missmatches; Otherwise, <see langword="true"/></returns>
         public override bool Equals(Object other)
         {
             if (other.GetType() != this.GetType()) return false;
@@ -15,14 +23,13 @@ namespace EDLibrary.EDStatusWatcher
             return (ohterFuel.FuelMain == this.FuelMain && ohterFuel.FuelReservoir == this.FuelReservoir);
         }
 
+        /// <summary>
+        /// Overriden Hash method
+        /// </summary>
+        /// <returns>Hash of <see cref="FuelMain"/> and <see cref="FuelReservoir"/></returns>
         public override int GetHashCode()
         {
             return HashCode.Combine(FuelMain, FuelReservoir);
-        }
-
-        public override string ToString()
-        {
-            return "Fuel: {Main: " + this.FuelMain.ToString() + " Reservoir: " + this.FuelReservoir.ToString() + " }";
         }
     }
 }

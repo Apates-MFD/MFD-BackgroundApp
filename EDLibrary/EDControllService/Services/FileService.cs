@@ -1,4 +1,4 @@
-﻿using EDLibrary.EDStatusWatcher;
+﻿using EDLibrary.StatusWatcher;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

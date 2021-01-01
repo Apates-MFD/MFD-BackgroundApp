@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EDLibrary.EDStatusWatcher
+namespace EDLibrary.StatusWatcher
 {
+    /// <summary>
+    /// Json structure of status update
+    /// </summary>
     public class SerializeableStatus
     {
         public DateTime timestamp { get; set; }
