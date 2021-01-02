@@ -1,4 +1,4 @@
-﻿namespace EDLibrary.EDControllService.CommandFactory
+﻿namespace EDLibrary.CommandFactory
 {
     public class SerializableCommand
     {

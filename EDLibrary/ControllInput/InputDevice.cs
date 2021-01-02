@@ -11,9 +11,7 @@ namespace EDLibrary.ControllInput
     {
         public InputDeviceNames InputDeviceName { get; private set; }
 
-        public event EventHandler<InputEventArgs> ButtonPressed;
-
-        public event EventHandler<InputEventArgs> ButtonReleased;
+        public event EventHandler<InputEventArgs> ButtonEvent;
 
         private bool running;
 
@@ -37,7 +35,7 @@ namespace EDLibrary.ControllInput
                 if (device.InstanceName == InputDeviceName.Value)
                 {
                     joystick = new Joystick(directInput, device.InstanceGuid);
-                    joystick.Acquire();                   
+                    joystick.Acquire();
                     buttonStates = new bool[joystick.GetCurrentState().Buttons.Length];
                 }
             }
@@ -56,9 +54,8 @@ namespace EDLibrary.ControllInput
                 if (buttonStates[i] != currentState[i])
                 {
                     buttonStates[i] = !buttonStates[i];
-                    if (ButtonPressed != null && buttonStates[i]) ButtonPressed.Invoke(this, new InputEventArgs { Button = new InputButton { ButtonNum = i } });
-                    if (ButtonReleased != null && !buttonStates[i]) ButtonReleased.Invoke(this, new InputEventArgs { Button = new InputButton { ButtonNum = i } });
-
+                    if (ButtonEvent != null) ButtonEvent.Invoke(this, new InputEventArgs { Button = new InputButton { ButtonNum = i, ButtonState = buttonStates[i] } });
+                   
                 }
             }
         }

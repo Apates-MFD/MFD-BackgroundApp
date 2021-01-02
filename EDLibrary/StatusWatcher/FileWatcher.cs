@@ -16,6 +16,7 @@ namespace EDLibrary.StatusWatcher
         /// </summary>
         public static void Run()
         {
+            if (running) return;
             using (FileSystemWatcher watcher = new FileSystemWatcher())
             {
                 watcher.Path = Constants.PathToStatusFolder;
@@ -44,7 +45,7 @@ namespace EDLibrary.StatusWatcher
         /// <param name="e"></param>
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
-            StatusParser.Parse();
+            Status.Parse();
         }
 
     }

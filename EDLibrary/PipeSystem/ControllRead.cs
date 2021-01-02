@@ -1,7 +1,7 @@
-﻿using System;
+﻿using EDLibrary.ControllInput;
+using System;
 using System.Collections.Generic;
 using System.Threading;
-using EDLibrary.ControllInput;
 
 namespace EDLibrary.PipeSystem
 {
@@ -11,7 +11,7 @@ namespace EDLibrary.PipeSystem
     public class ControllRead : PipeRead
     {
         private List<InputDevice> devices = new List<InputDevice>();
-
+       
         public override event EventHandler DataReceived;
 
         /// <summary>
@@ -26,6 +26,7 @@ namespace EDLibrary.PipeSystem
             {
                 try
                 {
+                    dev = null;
                     dev = new InputDevice(possibleDevice);
                 }
                 catch (ArgumentException)
@@ -36,10 +37,11 @@ namespace EDLibrary.PipeSystem
                 {
                     if (dev != null)
                     {
-                        dev.ButtonPressed += ButtonEvent;
-                        dev.ButtonReleased += ButtonEvent;
+                        dev.ButtonEvent += ButtonEvent;
                         devices.Add(dev);
-                        new Thread(new ThreadStart(dev.Observe));
+                        Thread t = new Thread(new ThreadStart(dev.Observe));
+                        t.IsBackground = true;
+                        t.Start();
                     }
                 }
             }

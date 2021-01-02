@@ -1,19 +1,30 @@
-﻿using EDLibrary.EDControllService.Menu;
+﻿using EDLibrary.Menu;
 using System;
 using System.Collections.Generic;
 
-namespace EDLibrary.EDControllService.CommandFactory
+namespace EDLibrary.CommandFactory
 {
-    public class Factory
+    /// <summary>
+    /// Parses and executes a command
+    /// </summary>
+    public static class Factory
     {
-        private Dictionary<Type, commandTypes> commandTypeMap = new Dictionary<Type, commandTypes>();
         private enum commandTypes
         {
             IN_GAME,
             CHANGE_MENU
         }
 
-        public ICommand getCommand(SerializableCommand serialized)
+        private static Dictionary<Type, commandTypes> commandTypeMap = new Dictionary<Type, commandTypes>(){
+                { typeof(InGameCommand), commandTypes.IN_GAME },
+                { typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU}
+        };
+        
+        /// <summary>
+        /// parses a serialized command and executes it
+        /// </summary>
+        /// <param name="serialized"></param>
+        public static Command GetCommand(SerializableCommand serialized)
         {
             if (serialized == null) return null;
             dynamic command = null;
@@ -21,7 +32,7 @@ namespace EDLibrary.EDControllService.CommandFactory
             switch (commandTypeMap[Type.GetType(serialized.CommandType)])
             {
                 case commandTypes.IN_GAME:
-                     command = new InGameCommand()
+                    command = new InGameCommand()
                     {
                         Action = Enum.Parse<Actions>(serialized.ParameterValues[0])
                     };
@@ -36,26 +47,7 @@ namespace EDLibrary.EDControllService.CommandFactory
                     };
                     break;
             }
-
             return command;
         }
-
-        #region Singelton
-        private static readonly Factory instance = new Factory();
-
-        private Factory()
-        {
-            //Populate commandTypeMap
-            commandTypeMap.Add(typeof(InGameCommand), commandTypes.IN_GAME);
-            commandTypeMap.Add(typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU);
-        }
-        public static Factory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-        #endregion
     }
 }

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using EDLibrary.UI;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using EDLibrary.UI;
 
 namespace EDStatusDisplay
 {
@@ -53,7 +52,7 @@ namespace EDStatusDisplay
         private static new Brush Background = Brushes.Black;
         private void clear()
         {
-            foreach(TextBlock block in buttonTexts)
+            foreach (TextBlock block in buttonTexts)
             {
                 block.Foreground = Foreground;
                 block.Background = Background;
@@ -65,14 +64,16 @@ namespace EDStatusDisplay
 
         public void Clear()
         {
-            Dispatcher.Invoke(new Action(() => {
+            Dispatcher.Invoke(new Action(() =>
+            {
                 this.clear();
             }));
         }
 
         public void SetInverted(int position, bool inverted)
         {
-            Dispatcher.Invoke(new Action(() => {
+            Dispatcher.Invoke(new Action(() =>
+            {
                 buttonTexts[position].Foreground = inverted ? Background : Foreground;
                 buttonTexts[position].Foreground = inverted ? Foreground : Background;
             }));
@@ -80,14 +81,16 @@ namespace EDStatusDisplay
 
         public void SetText(int position, string text)
         {
-            Dispatcher.Invoke(new Action(() => {
+            Dispatcher.Invoke(new Action(() =>
+            {
                 buttonTexts[position].Text = text;
             }));
         }
 
         public void SetEnabled(int position, bool enabled)
         {
-            Dispatcher.Invoke(new Action(() => {
+            Dispatcher.Invoke(new Action(() =>
+            {
                 buttonTexts[position].Opacity = enabled ? 1.0 : 0.0;
             }));
         }

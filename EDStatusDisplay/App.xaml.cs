@@ -1,6 +1,4 @@
-﻿using EDLibrary;
-using EDLibrary.ControllInput;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
 
 namespace EDStatusDisplay
@@ -18,7 +16,7 @@ namespace EDStatusDisplay
 
         protected override void OnExit(ExitEventArgs e)
         {
-            
+
             Debug.WriteLine("Byee");
             base.OnExit(e);
         }

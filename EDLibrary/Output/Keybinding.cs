@@ -1,4 +1,4 @@
-﻿using EDLibrary.EDControllService.Menu;
+﻿using EDLibrary.Menu;
 
 namespace EDLibrary.Output
 {

@@ -12,7 +12,7 @@ namespace EDLibrary.Output
     /// http://www.gamespp.com/directx/directInputKeyboardScanCodes.html</para>
     /// </summary>
     public class Keyboard
-    {         
+    {
         public static void exec(DirectXKeyStrokes[] strokes)
         {
             //Press

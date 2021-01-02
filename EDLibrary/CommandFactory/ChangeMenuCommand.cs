@@ -1,13 +1,12 @@
-﻿using EDLibrary.EDControllService.Services;
-using System;
+﻿using System;
 
-namespace EDLibrary.EDControllService.CommandFactory
+namespace EDLibrary.CommandFactory
 {
-    public class ChangeMenuCommand : ICommand
+    public class ChangeMenuCommand : Command
     {
         public string MenuName { get; set; }
         public string Caller { get; set; }
-        public void Execute()
+        public override void Execute(object sender)
         {
             if (MenuName == null || MenuName == "")
             {
@@ -17,7 +16,7 @@ namespace EDLibrary.EDControllService.CommandFactory
             {
                 throw new ArgumentNullException("Caller cannot be null");
             }
-            MenuService.Instance.SwapMenu(Caller, MenuName);
+            ((Controller)sender).ChangeMenu(Caller, MenuName);
         }
     }
 }

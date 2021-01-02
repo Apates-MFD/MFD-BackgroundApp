@@ -1,5 +1,4 @@
-﻿using EDLibrary;
-using EDLibrary.ControllInput;
+﻿using EDLibrary.ControllInput;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,8 +16,8 @@ namespace EDStatusDisplay
 
         private void btnSpawnMFD_Click(object sender, RoutedEventArgs e)
         {
-            InputDevice device = new InputDevice(InputDeviceNames.MFD_TWO);
-            device.Observe();
+
+            _ = EDLibrary.Controller.Instance;
         }
 
         protected override void OnClosing(CancelEventArgs e)

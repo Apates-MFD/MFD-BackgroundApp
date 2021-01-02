@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace EDLibrary.EDControllService.CommandFactory
+namespace EDLibrary.CommandFactory
 {
-    public class ModifyPanelCommand : ICommand
+    public class ModifyPanelCommand : Command
     {
         public UI.IPanel Panel { get; set; }
         public ModifyPanelChangeType ChangeType { get; set; }
         public int Position { get; set; }
         public dynamic Parameter { get; set; }
-        public void Execute()
+        public override void Execute(object sender)
         {
             if (Panel == null || Parameter == null || ChangeType == ModifyPanelChangeType.NULL)
             {

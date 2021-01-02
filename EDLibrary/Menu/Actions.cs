@@ -1,4 +1,4 @@
-﻿namespace EDLibrary.EDControllService.Menu
+﻿namespace EDLibrary.Menu
 {
     public enum Actions
     {

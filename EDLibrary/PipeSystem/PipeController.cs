@@ -51,7 +51,7 @@ namespace EDLibrary.PipeSystem
 
         private PipeController()
         {
-            
+
         }
         public static PipeController Instance
         {

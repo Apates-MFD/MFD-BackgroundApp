@@ -1,7 +1,5 @@
 ﻿using EDLibrary.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EDLibrary.PipeSystem
 {

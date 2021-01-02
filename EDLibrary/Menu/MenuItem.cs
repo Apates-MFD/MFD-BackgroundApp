@@ -1,6 +1,6 @@
-﻿using EDLibrary.EDControllService.CommandFactory;
+﻿using EDLibrary.CommandFactory;
 
-namespace EDLibrary.EDControllService.Menu
+namespace EDLibrary.Menu
 {
     public class MenuItem
     {
