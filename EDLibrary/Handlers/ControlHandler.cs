@@ -21,7 +21,7 @@ namespace EDLibrary.Handlers
         /// <summary>
         /// Constructor
         /// </summary>
-        public ControlHandler()
+        public ControlHandler(string pathToKeybindings)
         {
             readPipe = (ControllRead)PipeController.Instance.GetPipe(nameof(ControllRead));
             if(readPipe == null)
@@ -33,7 +33,7 @@ namespace EDLibrary.Handlers
             writePipe = (ControllWrite)PipeController.Instance.GetPipe(nameof(ControllWrite));
             if (writePipe == null)
             {
-                writePipe = new ControllWrite();
+                writePipe = new ControllWrite(pathToKeybindings);
                 PipeController.Instance.register(readPipe, nameof(ControllWrite));
             }
 

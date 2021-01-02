@@ -12,14 +12,15 @@ namespace EDLibrary.Handlers
     /// </summary>
     class StatusHandler
     {
-        private InfoRead infoPipe = new InfoRead();
+        private InfoRead infoPipe;
         private Dictionary<string, EventHandler<PropertyChangedEventArgs>> subscriber = new Dictionary<string, EventHandler<PropertyChangedEventArgs>>();
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public StatusHandler()
+        public StatusHandler(string pathToStatusFolder)
         {
+            infoPipe = new InfoRead(pathToStatusFolder);
             infoPipe.DataReceived += InfoReceived;
         }
 

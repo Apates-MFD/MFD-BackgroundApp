@@ -12,9 +12,10 @@ namespace EDLibrary.PipeSystem
     {
         public override event EventHandler DataReceived;
 
-        public InfoRead()
+        public InfoRead(string PathToStatusFolder)
         {
             Status.Instance.PropertyChanged += PropertyChanged;
+            FileWatcher.SetPathToStatusFolder(PathToStatusFolder);
             Thread t = new Thread(new ThreadStart(FileWatcher.Run));
             t.IsBackground = true;
             t.Start();
@@ -28,14 +29,6 @@ namespace EDLibrary.PipeSystem
         private void PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (DataReceived != null) DataReceived.Invoke(sender, e);
-        }
-
-        /// <summary>
-        /// Quits Filewatcher thread
-        /// </summary>
-        public override void Exit()
-        {
-            FileWatcher.Stop();
         }
     }
 }

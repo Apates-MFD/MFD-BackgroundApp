@@ -16,15 +16,17 @@ namespace EDLibrary
     public class Controller
     {
         private ConfigurationHandler configurationHandler = new ConfigurationHandler();
-        private ControlHandler controlHandler = new ControlHandler();
-        private StatusHandler statusHandler = new StatusHandler();
+        private ControlHandler controlHandler;
+        private StatusHandler statusHandler;
         private List<ActiveMenuInfo> activeMenus = new List<ActiveMenuInfo>();
        
         /// <summary>
         /// Init of Controller
         /// </summary>
         private void init()
-        {      
+        {
+            controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings());
+            statusHandler = new StatusHandler(configurationHandler.GetPathToStatusFolder());
             //Aquires Input Devices and setting mainmenu foreach device
             foreach(var dev in configurationHandler.GetInputDevices())
             {

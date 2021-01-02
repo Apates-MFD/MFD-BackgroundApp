@@ -22,9 +22,18 @@ namespace EDLibrary.Handlers
         public ConfigurationHandler()
         {
             #region MOCKUP
-            config = new Config() { InputDevices = new List<InputDeviceNames>(){ InputDeviceNames.MFD_TWO }, MainMenuName = "MEN1", PathToMenuFolder = "menus/", ButtonTriggerOnPress=false };
-            #endregion
+            config = new Config()
+            {
+                InputDevices = new List<InputDeviceNames>() { InputDeviceNames.MFD_TWO },
+                MainMenuName = "MEN1",
+                PathToMenuFolder = "menus/",
+                ButtonTriggerOnPress = false,
+                PathToStatusFolder = @"%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous\",
+                PathToKeybindings = "config/keybindings.json"
+            };
         }
+            #endregion
+        
 
         /// <summary>
         /// Reads all menus from menu path
@@ -95,6 +104,24 @@ namespace EDLibrary.Handlers
         public bool GetTriggerState()
         {
             return config.ButtonTriggerOnPress;
+        }
+
+        /// <summary>
+        /// returns path
+        /// </summary>
+        /// <returns></returns>
+        public string GetPathToStatusFolder()
+        {
+            return config.PathToStatusFolder;
+        }
+
+        /// <summary>
+        /// returns path
+        /// </summary>
+        /// <returns></returns>
+        public string GetPathToKeybindings()
+        {
+            return config.PathToKeybindings;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System;
 
 namespace EDLibrary.StatusWatcher
 {
@@ -9,17 +10,26 @@ namespace EDLibrary.StatusWatcher
     public class FileWatcher
     {
         private static bool running;
+        private static string pathToStatusFolder;
+
+        /// <summary>
+        /// Sets path
+        /// </summary>
+        /// <param name="pathToStatusFolder"></param>
+        public static void SetPathToStatusFolder(string pathToStatusFolder)
+        {
+            FileWatcher.pathToStatusFolder = pathToStatusFolder;
+        }
 
         /// <summary>
         /// Starts <see cref="FileSystemWatcher"/>
-        /// <para>Watches over <see cref="Constants.PathToStatus"/></para>
         /// </summary>
         public static void Run()
-        {
+        {         
             if (running) return;
             using (FileSystemWatcher watcher = new FileSystemWatcher())
             {
-                watcher.Path = Constants.PathToStatusFolder;
+                watcher.Path = Environment.ExpandEnvironmentVariables(pathToStatusFolder);
                 watcher.NotifyFilter = NotifyFilters.LastAccess;
                 watcher.Filter = "Status.json";
                 watcher.Changed += OnChanged;
@@ -45,7 +55,7 @@ namespace EDLibrary.StatusWatcher
         /// <param name="e"></param>
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
-            Status.Parse();
+            Status.Parse(pathToStatusFolder + @"\Status.json");
         }
 
     }

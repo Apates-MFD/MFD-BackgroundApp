@@ -6,6 +6,6 @@ namespace EDLibrary.PipeSystem
     /// </summary>
     public abstract class Pipe
     {
-        public abstract void Exit();
+
     }
 }

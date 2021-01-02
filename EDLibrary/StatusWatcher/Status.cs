@@ -142,9 +142,9 @@ namespace EDLibrary.StatusWatcher
         /// <summary>
         /// Parsing Method
         /// </summary>
-        public static void Parse()
+        public static void Parse(string pathToStatus)
         {
-            using (FileStream fileStream = File.Open(Constants.PathToStatus, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (FileStream fileStream = File.Open(pathToStatus, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (BinaryReader reader = new BinaryReader(fileStream, Encoding.UTF8, true))
             {
                 if (fileStream.Length == 0) return;

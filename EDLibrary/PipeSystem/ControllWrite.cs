@@ -11,22 +11,27 @@ namespace EDLibrary.PipeSystem
     class ControllWrite : PipeWrite
     {
         private static List<Keybinding> keybindings = null;
+        private string pathToKeybindins;
 
         /// <summary>
-        /// No exit needed, no threads running
+        /// Sets path to keybindings
         /// </summary>
-        public override void Exit() { }
-
+        /// <param name="PathToKeybindins"></param>
+        public ControllWrite(string PathToKeybindins)
+        {
+            pathToKeybindins = PathToKeybindins;
+        }
         /// <summary>
         /// <seealso cref="ControllWrite"/>
         /// </summary>
         /// <param name="data"></param>
+        /// 
         public override void Write(object data)
         {
             if (!data.GetType().Equals(typeof(Actions))) throw new ArgumentException("Argument is not an Action");
             Actions action = (Actions)data;
 
-            if (keybindings == null) keybindings = KeybindingParser.Parse();
+            if (keybindings == null) keybindings = KeybindingParser.Parse(pathToKeybindins);
             Keybinding binding = keybindings.Find(e => e.Action.Equals(action));
 
             if (binding == null) throw new Exception("Action not bound to key");

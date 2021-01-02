@@ -57,14 +57,5 @@ namespace EDLibrary.PipeSystem
             if (DataReceived != null) DataReceived.Invoke(sender, e);
         }
 
-        /// <summary>
-        /// Command to stop reading inputs
-        /// <para>Importand for exit since all inputs are runnnig in seperate threads</para>
-        /// </summary>
-        public override void Exit()
-        {
-            devices.ForEach(d => d.Stop());
-        }
-
     }
 }

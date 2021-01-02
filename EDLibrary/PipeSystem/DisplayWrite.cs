@@ -11,10 +11,6 @@ namespace EDLibrary.PipeSystem
         {
             this.panel = panel;
         }
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Write(object data)
         {

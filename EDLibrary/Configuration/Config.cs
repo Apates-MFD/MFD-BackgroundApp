@@ -10,7 +10,8 @@ namespace EDLibrary.Configuration
         public List<InputDeviceNames> InputDevices { get; set; }
         public string PathToMenuFolder { get; set; }
         public string MainMenuName { get; set; }
-        
         public bool ButtonTriggerOnPress { get; set; }
+        public string PathToStatusFolder { get; set; }
+        public string PathToKeybindings { get; set; }
     }
 }
