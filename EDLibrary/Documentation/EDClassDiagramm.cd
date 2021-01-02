@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="EDLibrary.Controller" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAiADAAAIAQAAAGBCAAEA=</HashCode>
+      <FileName>Controller\Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.ControllInput.InputButton" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ControllInput\InputButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.ControllInput.InputDevice" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAUAAAgAgAAABAAAAAgAAIAAKAIAAAAAAAA=</HashCode>
+      <FileName>ControllInput\InputDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.ControllInput.InputDeviceNames" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAABAAAgAAAAABAAAAAAIAAAghgAAIIAIA=</HashCode>
+      <FileName>ControllInput\InputDeviceNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.ControllInput.InputEventArgs" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ControllInput\InputEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Output.Keybinding" Collapsed="true">
+    <Position X="15" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQ=</HashCode>
+      <FileName>Output\Keybinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Output.KeybindingParser" Collapsed="true">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Output\KeybindingParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Output.Keyboard" Collapsed="true">
+    <Position X="15" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAAAQABAAAAA=</HashCode>
+      <FileName>Output\Keyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.ControllRead" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAAIAAAAAAAA=</HashCode>
+      <FileName>PipeSystem\ControllRead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.ControllWrite" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PipeSystem\ControllWrite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.DisplayWrite" Collapsed="true">
+    <Position X="7.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAA=</HashCode>
+      <FileName>PipeSystem\DisplayWrite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.InfoRead" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PipeSystem\InfoRead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.Pipe" Collapsed="true">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PipeSystem\Pipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.PipeController" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAEAAAAABAAAAAQQAQAAAAAAA=</HashCode>
+      <FileName>PipeSystem\PipeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.PipeRead" Collapsed="true">
+    <Position X="1.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PipeSystem\PipeRead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.PipeSystem.PipeWrite" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PipeSystem\PipeWrite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.StatusWatcher.SerializeableStatus" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAEAAAAgABAEIhAAAAgBCAAABAgAAACAAAAA=</HashCode>
+      <FileName>StatusWatcher\Deserialized Object\SerializeableStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.StatusWatcher.Fuel" Collapsed="true">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAABAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusWatcher\Status Properties\Fuel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.StatusWatcher.Pips" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAgAAAAAAAgEAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusWatcher\Status Properties\Pips.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.StatusWatcher.FileWatcher" Collapsed="true">
+    <Position X="22" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAgCAACAIAAAAAAAAAI=</HashCode>
+      <FileName>StatusWatcher\FileWatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.StatusWatcher.Status" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIgELQoAkEABAgBBAEMgAAAgAhCAJIVRkQARCIgIYA=</HashCode>
+      <FileName>StatusWatcher\Status.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.ChangeMenuCommand" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgCAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandFactory\ChangeMenuCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.Command" Collapsed="true">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandFactory\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.Factory" Collapsed="true">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>CommandFactory\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.InGameCommand" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CommandFactory\InGameCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.ModifyPanelCommand" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQgAAEAAAAAAAAQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>CommandFactory\ModifyPanelCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.CommandFactory.SerializableCommand" Collapsed="true">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandFactory\SerrializeableCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Configuration.Config" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAAAAAAAAAAAAgAAACAAAAAAAAAIAAAAAAAABAA=</HashCode>
+      <FileName>Configuration\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Handlers.ConfigurationHandler" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAAAAAAAAgAAAAAAAAAACgQECAAAAABAAAQAAA=</HashCode>
+      <FileName>Handlers\ConfigurationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Handlers.ControlHandler" Collapsed="true">
+    <Position X="15.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABQAAAAAAAAAAAAAgAAAAAAAAAIAAAAAAAAABEAAAA=</HashCode>
+      <FileName>Handlers\ControlHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Handlers.StatusHandler" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECAAAAAAAAAIAAAAAgAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\StatusHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Menu.ActiveMenuInfo" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIQAA=</HashCode>
+      <FileName>Menu\ActiveMenuInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Menu.MenuDisplay" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\MenuDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Menu.MenuInfo" Collapsed="true">
+    <Position X="9.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\MenuInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Menu.MenuItem" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAgAAAABgAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Menu\MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDLibrary.Menu.MFDMenu" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABAQAAAAAACBAAAAAAAgAAACBAAAAAEAAABQAAAAA=</HashCode>
+      <FileName>Menu\MFDMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EDLibrary.UI.IPanel" Collapsed="true">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAICAAAAAAAAAAAAAAAAAAABAAIA=</HashCode>
+      <FileName>UI\IPanel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="EDLibrary.Output.DirectXKeyStrokes" Collapsed="true">
+    <Position X="16.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>poZBAZkzAqs/olc9mJCkUrKcJR0wDBBigh6BDrfuAZQ=</HashCode>
+      <FileName>Output\Keyboard.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDLibrary.StatusWatcher.Flags" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAELQoAAEABAgBAAAEAAAAAAhAABIUBEAAxCIgIYA=</HashCode>
+      <FileName>StatusWatcher\Status Properties\Flags.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDLibrary.StatusWatcher.GuiFocus" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgAAAAAAAAEAgAAAAAAgAAEQAAAAIAEAAAJgAA=</HashCode>
+      <FileName>StatusWatcher\Status Properties\GuiFocus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDLibrary.StatusWatcher.LegalState" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAAAAAAAAAAAAAAAAAAAIAAAAIAAACgAAAAEACA=</HashCode>
+      <FileName>StatusWatcher\Status Properties\LegalState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDLibrary.CommandFactory.ModifyPanelChangeType" Collapsed="true">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACCAAAAAAAAAIAAAEAAgAAAAAA=</HashCode>
+      <FileName>CommandFactory\ModifyPanelCommand.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDLibrary.Menu.Actions" Collapsed="true">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQIAAAEgAAIIqqEEQBACASoABAQBwLgBBEGhIIAAKgA=</HashCode>
+      <FileName>Menu\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
