@@ -24,7 +24,7 @@ namespace EDLibrary.CommandFactory
         /// parses a serialized command and executes it
         /// </summary>
         /// <param name="serialized"></param>
-        public static Command GetCommand(SerializableCommand serialized)
+        public static Command GetCommand(SerializableCommand serialized, object sender)
         {
             if (serialized == null) return null;
             dynamic command = null;
@@ -42,8 +42,8 @@ namespace EDLibrary.CommandFactory
                 case commandTypes.CHANGE_MENU:
                     command = new ChangeMenuCommand()
                     {
-                        MenuName = serialized.ParameterValues[1],
-                        Caller = serialized.ParameterValues[0],
+                        MenuName = serialized.ParameterValues[0],
+                        Device = sender
                     };
                     break;
             }

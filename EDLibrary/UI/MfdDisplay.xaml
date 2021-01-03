@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDLibrary.UI" 
         mc:Ignorable="d"
-        Title="MfdDisplay" Height="650" Width="650" Top="1263" Left="1069" ResizeMode="NoResize" WindowStyle="None" Icon="/EDLibrary;component/UI/Transport_(333).jpg" ShowInTaskbar="False">
+        Title="MfdDisplay" Height="650" Width="650" Top="1263" Left="1069" ResizeMode="NoResize" WindowStyle="None" Icon="/EDLibrary;component/UI/Transport_(333).jpg" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" IsEnabled="False">
     <Window.Resources>
         <local:WidhtToFontConverter x:Key="WidhtToFontConverter"/>
     </Window.Resources>

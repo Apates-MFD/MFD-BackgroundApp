@@ -44,7 +44,7 @@ namespace EDLibrary
                         InputDevice inputDevice = (InputDevice)sender;
                         ActiveMenuInfo info = activeMenus.Find(e => e.AssignedInput.Equals(inputDevice.InputDeviceName));
                         SerializableCommand command = info.Menu.ButtonClick(args.Button.ButtonNum);
-                        executeCommand(Factory.GetCommand(command));                       
+                        executeCommand(Factory.GetCommand(command, inputDevice.InputDeviceName));                       
                     }
                 }));
                 EnableMenu(configurationHandler.GetMainMenu(), dev);
@@ -83,7 +83,7 @@ namespace EDLibrary
         {
             if (menu == null) throw new ArgumentException("Menu cannot be null");
 
-            if (activeMenus.Find(e => e.Menu.Equals(menu) || e.AssignedInput.Equals(input)) != null) return;
+            if (activeMenus.Find(e => e.AssignedInput.Equals(input)) != null) return;
             
             List<string> list = menu.getLinkedProperties();
 
@@ -115,16 +115,16 @@ namespace EDLibrary
         /// </summary>
         /// <param name="oldMenu"></param>
         /// <param name="newMenu"></param>
-        public void ChangeMenu(string oldMenuName, string newMenuName)
+        public void ChangeMenu(string newMenuName, object sender)
         {
-            if (oldMenuName == newMenuName) return;
-            ActiveMenuInfo menuInfo = activeMenus.Find(e => e.Menu.MenuInfo.MenuName.Equals(oldMenuName));
+            InputDeviceNames name = (InputDeviceNames)sender;
+            ActiveMenuInfo menuInfo = activeMenus.Find(e => e.AssignedInput.Equals(name));
             if (menuInfo == null) return;
 
             MFDMenu oldMenu = menuInfo.Menu;
-            MFDMenu newMenu = configurationHandler.GetMenu(newMenuName);         
+            MFDMenu newMenu = configurationHandler.GetMenu(newMenuName);
 
-            DisableMenu(oldMenu);
+            DisableMenu(menuInfo);
             EnableMenu(newMenu, menuInfo.AssignedInput);
         }
 
@@ -143,12 +143,9 @@ namespace EDLibrary
         /// <para>Essentially removes all callbacks</para>
         /// </summary>
         /// <param name="menu"></param>
-        public void DisableMenu(MFDMenu menu)
-        {
-            ActiveMenuInfo menuInfo = activeMenus.Find(e => e.Menu.Equals(menu));
-            if (menuInfo == null) return;
-
-            List<string> list = menu.getLinkedProperties();
+        public void DisableMenu(ActiveMenuInfo menuInfo)
+        {          
+            List<string> list = menuInfo.Menu.getLinkedProperties();
 
             foreach (string property in list)
             {
