@@ -4,7 +4,7 @@ using EDLibrary.Menu;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
+using Newtonsoft.Json;
 namespace EDLibrary.Handlers
 {
     /// <summary>
@@ -21,20 +21,56 @@ namespace EDLibrary.Handlers
         /// </summary>
         public ConfigurationHandler()
         {
-            #region MOCKUP
-            config = new Config()
-            {
-                InputDevices = new List<InputDeviceNames>() { InputDeviceNames.MFD_TWO },
-                MainMenuName = "MEN1",
-                PathToMenuFolder = "menus/",
-                ButtonTriggerOnPress = false,
-                PathToStatusFolder = @"%USERPROFILE%\Saved Games\Frontier Developments\Elite Dangerous\",
-                PathToKeybindings = "config/keybindings.json"
-            };
+            config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
+            List<InputDeviceNames> devices = new List<InputDeviceNames>(InputDeviceNames.GetAll());
+            config.InputDevices = new List<InputDeviceNames>();
+            config.InputDevicesStrings.ForEach(s =>
+               {
+                   devices.ForEach(d =>
+                   {
+                       if (d.Value == s) config.InputDevices.Add(d);
+                   });
+               });
         }
-            #endregion
-        
 
+        /// <summary>
+        /// Serializes current config object
+        /// </summary>
+        private void saveConfig()
+        {
+            File.WriteAllText("config.json",JsonConvert.SerializeObject(config, Formatting.Indented));
+        }
+
+        /// <summary>
+        /// Writer window position into config
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="property"></param>
+        public void SaveWindowPosition(InputDeviceNames name, double[] property)
+        {
+            if (config.WindowProperties == null) config.WindowProperties = new Dictionary<string, double[]>();
+            if (config.WindowProperties.ContainsKey(name.Value))
+            {
+                config.WindowProperties[name.Value] = property;
+            }
+            else
+            {
+                config.WindowProperties.Add(name.Value, property);
+            }
+
+            saveConfig();
+        }
+
+        /// <summary>
+        /// Gets window position from config
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="property"></param>
+        public double[] GetWindowPosition(InputDeviceNames name)
+        {
+            if (config.WindowProperties == null || !config.WindowProperties.ContainsKey(name.Value)) return null;
+            return config.WindowProperties[name.Value];
+        }
         /// <summary>
         /// Reads all menus from menu path
         /// </summary>
@@ -121,7 +157,7 @@ namespace EDLibrary.Handlers
         /// <returns></returns>
         public string GetPathToKeybindings()
         {
-            return config.PathToKeybindings;
+            return config.PathToConfiguration+"keybindings.json";
         }
     }
 }

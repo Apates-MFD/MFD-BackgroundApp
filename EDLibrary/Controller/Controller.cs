@@ -7,6 +7,7 @@ using EDLibrary.CommandFactory;
 using EDLibrary.Menu;
 using EDLibrary.Handlers;
 using EDLibrary.UI;
+using System.Windows;
 
 namespace EDLibrary
 {
@@ -16,6 +17,7 @@ namespace EDLibrary
     public class Controller
     {
         private ConfigurationHandler configurationHandler = new ConfigurationHandler();
+        private InterfaceHandler interfaceHandler = new InterfaceHandler();
         private ControlHandler controlHandler;
         private StatusHandler statusHandler;
         private List<ActiveMenuInfo> activeMenus = new List<ActiveMenuInfo>();
@@ -24,7 +26,10 @@ namespace EDLibrary
         /// Init of Controller
         /// </summary>
         private void init()
-        {
+        {           
+            Debug.Write("Controller init... ");
+            interfaceHandler.ReloadConfig += InterfaceHandler_ReloadConfig;
+            interfaceHandler.SaveConfig += InterfaceHandler_SaveConfig;
             controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings());
             statusHandler = new StatusHandler(configurationHandler.GetPathToStatusFolder());
             //Aquires Input Devices and setting mainmenu foreach device
@@ -43,7 +48,30 @@ namespace EDLibrary
                     }
                 }));
                 EnableMenu(configurationHandler.GetMainMenu(), dev);
-            }      
+            }
+            Debug.WriteLine("done.");
+        }
+
+        /// <summary>
+        /// Saves the current window position
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InterfaceHandler_SaveConfig(object sender, EventArgs e)
+        {
+            IPanel panel = (MfdDisplay) sender;
+            configurationHandler.SaveWindowPosition(interfaceHandler.GetDeviceName(panel), panel.GetWindowProperty());
+        }
+
+        /// <summary>
+        /// Reloads the position config from window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InterfaceHandler_ReloadConfig(object sender, EventArgs e)
+        {
+            IPanel panel = (MfdDisplay)sender;
+            panel.SetWindowProperty(configurationHandler.GetWindowPosition(interfaceHandler.GetDeviceName(panel)));
         }
 
         /// <summary>
@@ -77,10 +105,9 @@ namespace EDLibrary
                 });
 
                 statusHandler.SubscribeTo(property, activeMenuInfo.Callback);
-            }
-           
-            
+            }           
             activeMenus.Add(activeMenuInfo);
+            AssignPanel(menu, activeMenuInfo.AssignedInput);
         }
 
         /// <summary>
@@ -99,17 +126,17 @@ namespace EDLibrary
 
             DisableMenu(oldMenu);
             EnableMenu(newMenu, menuInfo.AssignedInput);
-            //AssignPanel(menuInfo.Menu.GetPanel(), menuInfo.AssignedInput);
         }
 
-        //public void AssignPanel(IPanel panel, InputDeviceNames type)
-        //{
-        //    ActiveMenuInfo info = activeMenus.Find(e => e.AssignedInput.Equals(type));
-        //    if (info != null)
-        //    {
-        //        info.Menu.SetPanel(panel);
-        //    }
-        //}
+        /// <summary>
+        /// Assign mfd input to panel
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <param name="type"></param>
+        public void AssignPanel(MFDMenu menu, InputDeviceNames type)
+        {
+            menu.SetPanel(interfaceHandler.GetPanel(type)).ForEach(c => executeCommand(c));
+        }
 
         /// <summary>
         /// Disables menu
@@ -127,8 +154,7 @@ namespace EDLibrary
             {
                 statusHandler.UnsubscribeFrom(property, menuInfo.Callback);
             }
-            //IPanel panel = menu.GetPanel();
-            //if (panel != null) new ModifyPanelCommand() { Panel = panel, ChangeType = ModifyPanelChangeType.CLEAR }.Execute();
+            interfaceHandler.GetPanel(menuInfo.AssignedInput).Clear();
             activeMenus.Remove(menuInfo);
         }
 
@@ -155,6 +181,11 @@ namespace EDLibrary
             controlHandler.Write(action);
         }
 
+
+        public Application GetApplication()
+        {
+            return interfaceHandler.Application;
+        }
         #region Singelton
         private static readonly Controller instance = new Controller();
 

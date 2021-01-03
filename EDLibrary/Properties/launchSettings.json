@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EDLibrary": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Sam\\Documents\\ED Stuff\\ED Cockpit Status\\ED - Multi Function Display\\ED-MFD\\MFDLauncher\\bin\\Debug\\netcoreapp3.1\\MFDLauncher.exe"
+    }
+  }
+}

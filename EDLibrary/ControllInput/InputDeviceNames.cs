@@ -5,6 +5,7 @@ namespace EDLibrary.ControllInput
     /// <summary>
     /// This is a enum with strings workaround
     /// </summary>
+    
     public class InputDeviceNames
     {
         private InputDeviceNames(string value) { Value = value; }
