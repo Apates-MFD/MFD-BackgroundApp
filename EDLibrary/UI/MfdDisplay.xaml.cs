@@ -31,6 +31,8 @@ namespace EDLibrary.UI
         private SolidColorBrush backgroundBrush;
         private Color defaultForegroundColor;
         private Color defaultBackgroundColor;
+
+        private bool isInEditMode = false;
         public MfdDisplay()
         {
             InitializeComponent();
@@ -76,8 +78,8 @@ namespace EDLibrary.UI
                     defaultForegroundColor = foregroundBrush.Color;
                 }
 
-            } 
-            
+            }
+           
             //mediaElement.Source = new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
         }
 
@@ -89,6 +91,10 @@ namespace EDLibrary.UI
         private void MfdDisplay_Activated(object sender, EventArgs e)
         {
             ReloadConfig.Invoke(this, new EventArgs());
+            MaxWidth = ActualWidth;
+            MinWidth = ActualWidth;
+            MaxHeight = ActualHeight;
+            MinHeight = ActualHeight;
         }
 
         private void clear()
@@ -155,13 +161,19 @@ namespace EDLibrary.UI
 
         private void EditModeClick(object sender, RoutedEventArgs e)
         {
-            WindowStyle = WindowStyle.ToolWindow;
-            ResizeMode = ResizeMode.CanResize;
+            isInEditMode = true;          
+            MaxWidth = double.PositiveInfinity;
+            MinWidth = 0;
+            MaxHeight = double.PositiveInfinity;
+            MinHeight = 0;
         }
         private void FixedModeClick(object sender, RoutedEventArgs e)
         {
-            WindowStyle = WindowStyle.None;
-            ResizeMode = ResizeMode.NoResize;
+            isInEditMode = false;
+            MaxWidth = ActualWidth;
+            MinWidth = ActualWidth;
+            MaxHeight = ActualHeight;
+            MinHeight = ActualHeight;
         }
         private void SaveConfigClick(object sender, RoutedEventArgs e)
         {
@@ -276,6 +288,11 @@ namespace EDLibrary.UI
                 Debug.WriteLine("{0} {1} {2}", color.R, color.G, color.B);
                 brush.Color = color;
             }));
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(isInEditMode)this.DragMove();
         }
     }
 }
