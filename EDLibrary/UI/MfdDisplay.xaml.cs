@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,16 @@ namespace EDLibrary.UI
         public event EventHandler ReloadConfig;
         public event EventHandler SaveConfig;
 
+        private double brightnessFactor = 1.0;
+        private double brightnessStep = 0.2;
+        private double contrastFactor = 1.0;
+        private double contrastStep = 8;
+
+        private TextBlock[] buttonTexts;
+        private SolidColorBrush foregroundBrush;
+        private SolidColorBrush backgroundBrush;
+        private Color defaultForegroundColor;
+        private Color defaultBackgroundColor;
         public MfdDisplay()
         {
             InitializeComponent();
@@ -47,6 +58,27 @@ namespace EDLibrary.UI
                 txt_Btn_19
             };
             this.Activated += MfdDisplay_Activated;
+
+            var keys = this.Resources.Keys.GetEnumerator();
+            var values = this.Resources.Values.GetEnumerator();
+           
+            while (keys.MoveNext()) 
+            {
+                values.MoveNext();
+                if ((string)keys.Current == "BackgroundBrush")
+                {
+                    backgroundBrush = (SolidColorBrush)values.Current;
+                    defaultBackgroundColor = backgroundBrush.Color;
+                }
+                if ((string)keys.Current == "ForegroundBrush")
+                {
+                    foregroundBrush  = (SolidColorBrush)values.Current;
+                    defaultForegroundColor = foregroundBrush.Color;
+                }
+
+            } 
+            
+            //mediaElement.Source = new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
         }
 
         /// <summary>
@@ -59,15 +91,12 @@ namespace EDLibrary.UI
             ReloadConfig.Invoke(this, new EventArgs());
         }
 
-        private TextBlock[] buttonTexts;
-        private static new Brush Foreground = Brushes.LimeGreen;
-        private static new Brush Background = Brushes.Black;
         private void clear()
         {
             foreach (TextBlock block in buttonTexts)
             {
-                block.Foreground = Foreground;
-                block.Background = Background;
+                block.Foreground = foregroundBrush;
+                block.Background = backgroundBrush;
                 block.Text = "";
                 block.Opacity = 1.0;
             }
@@ -93,8 +122,8 @@ namespace EDLibrary.UI
         {
             Dispatcher.Invoke(new Action(() =>
             {
-                buttonTexts[position].Foreground = inverted ? Background : Foreground;
-                buttonTexts[position].Background = inverted ? Foreground : Background;
+                buttonTexts[position].Foreground = inverted ? backgroundBrush : foregroundBrush;
+                buttonTexts[position].Background = inverted ? foregroundBrush : backgroundBrush;
             }));
         }
 
@@ -169,5 +198,85 @@ namespace EDLibrary.UI
         {
             Application.Current.Shutdown();
         }
+        /// <summary>
+        /// IncreaseBrightness
+        /// </summary>
+        public void IncreaseBrightness()
+        {
+            brightnessFactor += brightnessStep;
+            changeBrightness(defaultForegroundColor,foregroundBrush);
+            changeBrightness(defaultBackgroundColor, backgroundBrush);
+        }
+
+        /// <summary>
+        /// DecreaseBrightness
+        /// </summary>
+        public void DecreaseBrightness()
+        {
+            brightnessFactor -= brightnessStep;
+            if (brightnessFactor < 0) brightnessFactor = 0;
+            changeBrightness(defaultForegroundColor, foregroundBrush);
+            changeBrightness(defaultBackgroundColor, backgroundBrush);
+        }
+
+        /// <summary>
+        /// IncreaseContrast
+        /// </summary>
+        public void IncreaseContrast()
+        {
+            contrastFactor += contrastStep;
+            changeContrast(defaultForegroundColor, foregroundBrush);
+            changeContrast(defaultBackgroundColor, backgroundBrush);
+        }
+
+        /// <summary>
+        /// DecreaseContrast
+        /// </summary>
+        public void DecreaseContrast()
+        {
+            contrastFactor -= contrastStep;
+            if (contrastFactor < 0) contrastFactor = 0;
+            changeContrast(defaultForegroundColor, foregroundBrush);
+            changeContrast(defaultBackgroundColor, backgroundBrush);
+        }
+
+        /// <summary>
+        /// Changes Brightness
+        /// </summary>
+        /// <param name="defaultC"></param>
+        /// <param name="brush"></param>
+        private void changeBrightness(Color defaultC, SolidColorBrush brush)
+        {
+            Dispatcher.Invoke(new Action(() =>
+            {
+                Color color = defaultC;
+                color.R = (Byte)Math.Clamp(color.R * brightnessFactor, 0, 255);
+                color.G = (Byte)Math.Clamp(color.G * brightnessFactor, 0, 255);
+                color.B = (Byte)Math.Clamp(color.B * brightnessFactor, 0, 255);
+                Debug.WriteLine("{0} {1} {2}", color.R, color.G, color.B);
+                brush.Color = color;
+            }));
+        }
+
+        /// <summary>
+        /// changes contrast
+        /// </summary>
+        /// <param name="defaultC"></param>
+        /// <param name="brush"></param>
+        private void changeContrast(Color defaultC, SolidColorBrush brush)
+        {
+            var fac = (259 * (contrastFactor + 255)) / (255 * (259 - contrastFactor));
+            Dispatcher.Invoke(new Action(() =>
+            {
+                Color color = defaultC;
+                color.R = (Byte)Math.Clamp(Math.Truncate(fac * (color.R - 128) + 128), 0,255);
+                color.G = (Byte)Math.Clamp(Math.Truncate(fac * (color.G - 128) + 128), 0, 255);
+                color.B = (Byte)Math.Clamp(Math.Truncate(fac * (color.B - 128) + 128), 0, 255);
+                 
+                Debug.WriteLine("{0} {1} {2}", color.R, color.G, color.B);
+                brush.Color = color;
+            }));
+        }
     }
 }
+

@@ -41,5 +41,11 @@
         /// </summary>
         /// <param name="porperty"></param>
         public void SetWindowProperty(double[] porperty);
+
+        public void IncreaseBrightness();
+        public void DecreaseBrightness();
+
+        public void IncreaseContrast();
+        public void DecreaseContrast();
     }
 }

@@ -31,6 +31,7 @@ namespace EDLibrary
             interfaceHandler.ReloadConfig += InterfaceHandler_ReloadConfig;
             interfaceHandler.SaveConfig += InterfaceHandler_SaveConfig;
             controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings());
+            controlHandler.MenuButtonPressed += ControlHandler_MenuButtonPressed;
             statusHandler = new StatusHandler(configurationHandler.GetPathToStatusFolder());
             //Aquires Input Devices and setting mainmenu foreach device
             foreach(var dev in configurationHandler.GetInputDevices())
@@ -50,6 +51,42 @@ namespace EDLibrary
                 EnableMenu(configurationHandler.GetMainMenu(), dev);
             }
             Debug.WriteLine("done.");
+        }
+
+        /// <summary>
+        /// Handels Menu Buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ControlHandler_MenuButtonPressed(object sender, EventArgs e)
+        {
+            InputEventArgs args = (InputEventArgs)e;
+            InputDevice inputDevice = (InputDevice)sender;
+
+            if (!args.Button.ButtonState == true) return;
+
+            IPanel panel = interfaceHandler.GetPanel(inputDevice.InputDeviceName);
+
+            switch (args.Button.ButtonNum)
+            {
+                case 22:
+                    panel.IncreaseContrast();
+                    break;
+
+                case 23:
+                    panel.DecreaseContrast();
+                    break;
+
+                case 24:
+                    panel.IncreaseBrightness();
+                    break;
+
+                case 25:
+                    panel.DecreaseBrightness();
+                    break;
+            }
+
+
         }
 
         /// <summary>

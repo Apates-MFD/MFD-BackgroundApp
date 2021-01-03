@@ -17,7 +17,7 @@ namespace EDLibrary.Handlers
         private static Dictionary<InputDeviceNames, EventHandler> acquiredDevices = new Dictionary<InputDeviceNames, EventHandler>();
         private ControllRead readPipe;
         private ControllWrite writePipe;
-        
+        public event EventHandler MenuButtonPressed;
         /// <summary>
         /// Constructor
         /// </summary>
@@ -48,9 +48,17 @@ namespace EDLibrary.Handlers
         private void DataReceived(object sender, EventArgs e)
         {
             var device = (InputDevice)sender;
-            if (acquiredDevices.ContainsKey(device.InputDeviceName))
+            InputEventArgs args = (InputEventArgs)e;
+            if (args.Button.ButtonNum >= 20 && args.Button.ButtonNum <= 27)
             {
-                acquiredDevices[device.InputDeviceName].Invoke(sender, e);
+                if (MenuButtonPressed != null) MenuButtonPressed.Invoke(sender, e);
+            }
+            else
+            {
+                if (acquiredDevices.ContainsKey(device.InputDeviceName))
+                {
+                    acquiredDevices[device.InputDeviceName].Invoke(sender, e);
+                }
             }
         }
 
