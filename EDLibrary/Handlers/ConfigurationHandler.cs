@@ -22,6 +22,7 @@ namespace EDLibrary.Handlers
         public ConfigurationHandler()
         {
             config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
+            if (config.InputDevicesStrings.Count > 2 || config.InputDevicesStrings.Count < 0) throw new Exception("Invalid numbers of inputs");
             List<InputDeviceNames> devices = new List<InputDeviceNames>(InputDeviceNames.GetAll());
             config.InputDevices = new List<InputDeviceNames>();
             config.InputDevicesStrings.ForEach(s =>

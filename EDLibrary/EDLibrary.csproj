@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="UI\resources\Transport_%28333%29.jpg" />
     <Resource Include="UI\Transport_(333).jpg" />
   </ItemGroup>
 
@@ -38,6 +39,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+	<Resource Include="UI\resources\Glass Gauge.ttf" />
   </ItemGroup>
 
 </Project>

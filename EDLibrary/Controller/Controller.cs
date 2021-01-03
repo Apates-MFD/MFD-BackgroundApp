@@ -178,11 +178,33 @@ namespace EDLibrary
             controlHandler.Write(action);
         }
 
-
+        /// <summary>
+        /// Return Applicaton
+        /// </summary>
+        /// <returns></returns>
         public Application GetApplication()
         {
             return interfaceHandler.Application;
         }
+
+        /// <summary>
+        /// Swaps the two displays
+        /// </summary>
+        public void Swap()
+        {
+            if(activeMenus.Count == 2)
+            {
+                ActiveMenuInfo info1 = activeMenus[0];
+                ActiveMenuInfo info2 = activeMenus[1];
+
+                MFDMenu menu1 = info1.Menu;
+                MFDMenu menu2 = info2.Menu;
+
+                ChangeMenu(menu2.MenuInfo.MenuName, info1.AssignedInput);
+                ChangeMenu(menu1.MenuInfo.MenuName, info2.AssignedInput);
+            }
+        }
+
         #region Singelton
         private static readonly Controller instance = new Controller();
 

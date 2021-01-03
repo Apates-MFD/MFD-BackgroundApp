@@ -76,7 +76,11 @@ namespace EDLibrary.Handlers
         /// <returns></returns>
         private MfdDisplay initDisplay()
         {
-            MfdDisplay mfdDisplay = new MfdDisplay();
+            MfdDisplay mfdDisplay = null;
+            Application.Dispatcher.Invoke(new Action(() =>
+            {
+                mfdDisplay = new MfdDisplay();
+            }));
             mfdDisplay.Closed += MfdDisplay_Closed;
             mfdDisplay.ReloadConfig += ReloadConfig;
             mfdDisplay.SaveConfig += SaveConfig;

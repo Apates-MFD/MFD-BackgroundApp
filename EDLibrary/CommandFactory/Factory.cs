@@ -12,12 +12,14 @@ namespace EDLibrary.CommandFactory
         private enum commandTypes
         {
             IN_GAME,
-            CHANGE_MENU
+            CHANGE_MENU,
+            SWAP_MENU
         }
 
         private static Dictionary<Type, commandTypes> commandTypeMap = new Dictionary<Type, commandTypes>(){
                 { typeof(InGameCommand), commandTypes.IN_GAME },
-                { typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU}
+                { typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU},
+                { typeof(SwapCommand), commandTypes.SWAP_MENU}
         };
         
         /// <summary>
@@ -45,6 +47,10 @@ namespace EDLibrary.CommandFactory
                         MenuName = serialized.ParameterValues[0],
                         Device = sender
                     };
+                    break;
+
+                case commandTypes.SWAP_MENU:
+                    command = new SwapCommand();
                     break;
             }
             return command;

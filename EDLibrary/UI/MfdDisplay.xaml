@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDLibrary.UI" 
         mc:Ignorable="d"
-        Title="MfdDisplay" Height="650" Width="650" Top="1263" Left="1069" ResizeMode="NoResize" WindowStyle="None" Icon="/EDLibrary;component/UI/Transport_(333).jpg" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" IsEnabled="False">
+        Title="MfdDisplay" Height="650" Width="650" Top="1263" Left="1069" ResizeMode="NoResize" WindowStyle="None" Icon="/EDLibrary;component/UI/Transport_(333).jpg" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:WidhtToFontConverter x:Key="WidhtToFontConverter"/>
     </Window.Resources>
@@ -16,6 +16,8 @@
             <Separator/>
             <MenuItem Header="Save Configuration" Click="SaveConfigClick"/>
             <MenuItem Header="Reload Configuration" Click="ReloadConfigClick"/>
+            <Separator/>
+            <MenuItem Header="Shutdown" Click="ExitClick"/>
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
@@ -42,11 +44,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="0.75*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txt_Btn_1" TextWrapping="Wrap"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_2" TextWrapping="Wrap"  Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_3" TextWrapping="Wrap"  Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_4" TextWrapping="Wrap"  Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_0" TextWrapping="Wrap"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
+                <TextBlock x:Name="txt_Btn_1" TextWrapping="Wrap"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" FontStyle="Normal" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_2" TextWrapping="Wrap"  Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_3" TextWrapping="Wrap"  Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_4" TextWrapping="Wrap"  Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_0" TextWrapping="Wrap"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
 
             </Grid>
             <Grid x:Name="Buttons_Bottom" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FlowDirection="LeftToRight" Grid.Row="2" ShowGridLines="False">
@@ -59,11 +61,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="0.75*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txt_Btn_14" TextWrapping="Wrap"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_13" TextWrapping="Wrap"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_12" TextWrapping="Wrap"  Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_11" TextWrapping="Wrap"  Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_10" TextWrapping="Wrap"  Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
+                <TextBlock x:Name="txt_Btn_14" TextWrapping="Wrap"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_13" TextWrapping="Wrap"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_12" TextWrapping="Wrap"  Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_11" TextWrapping="Wrap"  Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_10" TextWrapping="Wrap"  Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
             </Grid>
             <Grid x:Name="Buttons_Right" Grid.Column="2" Grid.Row="1" ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -75,11 +77,11 @@
                     <RowDefinition/>
                     <RowDefinition Height="0.39*"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="txt_Btn_5" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_6" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_7" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_8" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_9" TextWrapping="Wrap" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
+                <TextBlock x:Name="txt_Btn_5" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_6" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_7" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_8" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_9" TextWrapping="Wrap" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
             </Grid>
             <Grid x:Name="Buttons_Left" Grid.Row="1" Grid.Column="0" ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -91,11 +93,11 @@
                     <RowDefinition/>
                     <RowDefinition Height="0.29*"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="txt_Btn_19" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_18" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_17" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_16" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
-                <TextBlock x:Name="txt_Btn_15" TextWrapping="Wrap" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="B612 Regular" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Normal" Background="Black" Foreground="Lime"/>
+                <TextBlock x:Name="txt_Btn_19" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_18" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_17" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_16" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
+                <TextBlock x:Name="txt_Btn_15" TextWrapping="Wrap" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Glass Gauge" FontSize="{Binding ActualWidth, Converter={StaticResource WidhtToFontConverter}, ElementName=Buttons_Left, Mode=OneWay}" FontWeight="Bold" Background="Black" Foreground="LimeGreen" LineStackingStrategy="BlockLineHeight"/>
             </Grid>
             <Grid x:Name="Grid_Center" Grid.Column="1" Margin="0,41,0,41" Grid.RowSpan="3" ShowGridLines="False">
                 <Grid.RowDefinitions>

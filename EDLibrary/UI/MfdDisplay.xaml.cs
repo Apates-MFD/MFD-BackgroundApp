@@ -60,7 +60,7 @@ namespace EDLibrary.UI
         }
 
         private TextBlock[] buttonTexts;
-        private static new Brush Foreground = Brushes.Lime;
+        private static new Brush Foreground = Brushes.LimeGreen;
         private static new Brush Background = Brushes.Black;
         private void clear()
         {
@@ -165,6 +165,9 @@ namespace EDLibrary.UI
             Left = properties[3];
         }
 
-        
+        private void ExitClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
