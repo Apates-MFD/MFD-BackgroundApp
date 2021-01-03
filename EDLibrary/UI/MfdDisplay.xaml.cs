@@ -24,7 +24,7 @@ namespace EDLibrary.UI
         private double brightnessFactor = 1.0;
         private double brightnessStep = 0.2;
         private double contrastFactor = 1.0;
-        private double contrastStep = 8;
+        private double contrastStep = 4;
 
         private TextBlock[] buttonTexts;
         private SolidColorBrush foregroundBrush;

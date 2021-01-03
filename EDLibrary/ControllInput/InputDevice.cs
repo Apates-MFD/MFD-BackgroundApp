@@ -1,5 +1,6 @@
 ﻿using SharpDX.DirectInput;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace EDLibrary.ControllInput
@@ -19,6 +20,10 @@ namespace EDLibrary.ControllInput
 
         private bool[] buttonStates;
 
+        private long[] timestamps;
+
+        private int startDelay = 1000; //ms
+        private int pressDelay = 100;
         /// <summary>
         /// InputDevice Constructor
         /// </summary>
@@ -37,6 +42,7 @@ namespace EDLibrary.ControllInput
                     joystick = new Joystick(directInput, device.InstanceGuid);
                     joystick.Acquire();
                     buttonStates = new bool[joystick.GetCurrentState().Buttons.Length];
+                    timestamps = new long[buttonStates.Length];
                 }
             }
 
@@ -55,7 +61,23 @@ namespace EDLibrary.ControllInput
                 {
                     buttonStates[i] = !buttonStates[i];
                     if (ButtonEvent != null) ButtonEvent.Invoke(this, new InputEventArgs { Button = new InputButton { ButtonNum = i, ButtonState = buttonStates[i] } });
-                   
+
+                    timestamps[i] =  buttonStates[i] ? DateTimeOffset.Now.ToUnixTimeMilliseconds() : 0;
+                }
+                else
+                {
+                    if (buttonStates[i])
+                    {
+                        long currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                        if (timestamps[i] > 0)
+                        {
+                            if (timestamps[i] + startDelay < currentTime)
+                            {
+                                if (ButtonEvent != null) ButtonEvent.Invoke(this, new InputEventArgs { Button = new InputButton { ButtonNum = i, ButtonState = buttonStates[i] } });
+                                timestamps[i] += pressDelay;
+                            }
+                        }
+                    }
                 }
             }
         }
