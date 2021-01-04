@@ -1,0 +1,128 @@
+{
+    "MenuItems": [
+      {
+        "DisplayText": "HARD",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": "HARDPOINTS_DEPLOYED",
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["DEPLOY_HARDPOINTS"]
+          }
+      },
+      {
+        "DisplayText": "PREVF",
+        "State": false,
+        "Position": 9,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_PREVIOUS_FIRE_GROUP"]
+          }
+      },
+      {
+        "DisplayText": "NEXF",
+        "State": false,
+        "Position": 8,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_NEXT_FIRE_GROUP"]
+          }
+      },
+      {
+        "DisplayText": "PREVH",
+        "State": false,
+        "Position": 5,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_PREVIOUS_HOSTILE_SHIP"]
+          }
+      },
+      {
+        "DisplayText": "NEXH",
+        "State": false,
+        "Position": 6,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_NEXT_HOSTILE_TARGET"]
+          }
+      },
+      {
+        "DisplayText": "HIT",
+        "State": false,
+        "Position": 19,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "EDLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["SELECT_HIGHEST_THREAT"]
+          }
+      },
+      {
+        "DisplayText": "SWAP",
+        "State": false,
+        "Position": 14,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.SwapCommand"
+        }
+      },
+      {
+        "DisplayText": "FLCS",
+        "State": false,
+        "Position": 13,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "FLCS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SLMP",
+        "State": false,
+        "Position": 12,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SLMP"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SMS",
+        "State": false,
+        "Position": 11,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SMS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "NAV",
+        "State": false,
+        "Position": 10,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "NAV"
+          ]
+        }
+      }
+    
+    ],
+    "MenuInfo": {
+      "Description": "Stores Management System",
+      "MenuName": "SMS"
+    },
+    "MenuDisplay": {}
+  }    
+              

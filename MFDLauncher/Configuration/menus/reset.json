@@ -1,0 +1,116 @@
+{
+    "MenuItems": [
+    {
+        "DisplayText": "S NGT",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+        },
+        {
+        "DisplayText": "S DAY",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+        },
+      {
+        "DisplayText": "L DAY",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "L NGT",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "RST SYM",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "RST BRT",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "RST GAIN",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "RST CON",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null
+      },
+      {
+        "DisplayText": "SWAP",
+        "State": false,
+        "Position": 14,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.SwapCommand"
+        }
+      },
+      {
+        "DisplayText": "FLCS",
+        "State": false,
+        "Position": 13,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "FLCS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SLMP",
+        "State": false,
+        "Position": 12,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SLMP"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SMS",
+        "State": false,
+        "Position": 11,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SMS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "NAV",
+        "State": false,
+        "Position": 10,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "EDLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "NAV"
+          ]
+        }
+      }
+    
+    ],
+    "MenuInfo": {
+      "Description": "Reset Menu",
+      "MenuName": "RESETMENU"
+    },
+    "MenuDisplay": {}
+  }    
+              

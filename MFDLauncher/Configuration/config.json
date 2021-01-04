@@ -1,0 +1,25 @@
+{
+  "InputDevicesStrings": [
+    "F16 MFD 2",
+    "F16 MFD 1"
+  ],
+  "PathToMenuFolder": "menus/",
+  "MainMenuName": "SLMP",
+  "ButtonTriggerOnPress": false,
+  "PathToStatusFolder": "%USERPROFILE%\\Saved Games\\Frontier Developments\\Elite Dangerous\\",
+  "PathToConfiguration": "config/",
+  "WindowProperties": {
+    "F16 MFD 2": [
+      866.4000000000001,
+      836.8000000000001,
+      1559.2,
+      1328.0
+    ],
+    "F16 MFD 1": [
+      862.4000000000001,
+      828.0,
+      1554.4,
+      269.6
+    ]
+  }
+}
