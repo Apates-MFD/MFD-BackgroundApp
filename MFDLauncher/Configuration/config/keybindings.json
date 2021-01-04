@@ -1,0 +1,394 @@
+[
+    {
+    "Action": "TOGGLE_FLIGHT_ASSIST",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD0"
+    ]
+    },
+    {
+    "Action": "ENGINE_BOOST",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD1"
+    ]
+    },
+    {
+    "Action": "TOGGLE_FRAME_SHIFT_DRIVE",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD2"
+    ]
+    },
+    {
+    "Action": "SUPERCRUISE",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD3"
+    ]
+    },
+    {
+    "Action": "HYPERSPACE_JUMP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD4"
+    ]
+    },
+    {
+    "Action": "ROTATIONAL_CORRECTION",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD5"
+    ]
+    },
+    {
+    "Action": "TOGGLE_ORBIT_LINES",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD6"
+    ]
+    },
+    {
+    "Action": "CYCLE_NEXT_TARGET",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD7"
+    ]
+    },
+    {
+    "Action": "CYCLE_PREVIOUS_SHIP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD8"
+    ]
+    },
+    {
+    "Action": "SELECT_HIGHEST_THREAT",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_NUMPAD9"
+    ]
+    },
+    {
+    "Action": "CYCLE_NEXT_HOSTILE_TARGET",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_Q"
+    ]
+    },
+    {
+    "Action": "CYCLE_PREVIOUS_HOSTILE_SHIP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_W"
+    ]
+    },
+    {
+    "Action": "CYCLE_NEXT_SUBSYSTEM",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_E"
+    ]
+    },
+    {
+    "Action": "CYCLE_PREVIOUS_SUBSYSTEM",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_R"
+    ]
+    },
+    {
+    "Action": "CYCLE_NEXT_FIRE_GROUP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_T"
+    ]
+    },
+    {
+    "Action": "CYCLE_PREVIOUS_FIRE_GROUP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_Y"
+    ]
+    },
+    {
+    "Action": "DEPLOY_HARDPOINTS",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_U"
+    ]
+    },
+    {
+    "Action": "SILENT_RUNNING",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_I"
+    ]
+    },
+    {
+    "Action": "DEPLOY_HEAT_SINK",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_O"
+    ]
+    },
+    {
+    "Action": "SHIP_LIGHTS",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_P"
+    ]
+    },
+    {
+    "Action": "INCREASE_SENSOR_ZOOM",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_A"
+    ]
+    },
+    {
+    "Action": "DECREASE_SENSOR_ZOOM",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_S"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_ENGINES",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_D"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_WEAPONS",
+    "KeyStrokes": [
+    "DIK_RCONTROL",
+    "DIK_LALT",
+    "DIK_F"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_SYSTEMS",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_G"
+    ]
+    },
+    {
+    "Action": "BALANCE_POWER_DISTRIBUTION",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_H"
+    ]
+    },
+    {
+    "Action": "CARGO_SCOOP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_J"
+    ]
+    },
+    {
+    "Action": "JETTISON_ALL_CARGO",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_K"
+    ]
+    },
+    {
+    "Action": "LANDING_GEAR",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_L"
+    ]
+    },
+    {
+    "Action": "USE_SHIELD_CELL",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_Z"
+    ]
+    },
+    {
+    "Action": "USE_CHAFF_LAUNCHER",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_X"
+    ]
+    },
+    {
+    "Action": "CHARGE_ECM",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_C"
+    ]
+    },
+    {
+    "Action": "DRIVE_ASSIST",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_V"
+    ]
+    },
+    {
+    "Action": "HANDBREAK",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_B"
+    ]
+    },
+    {
+    "Action": "HEADLIGHTS",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_N"
+    ]
+    },
+    {
+    "Action": "TOGGLE_SRV_TURRET",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_M"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_ENGINES_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_COMMA"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_WEAPONS_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_PERIOD"
+    ]
+    },
+    {
+    "Action": "DIVERT_POWER_TO_SYSTEMS_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_SLASH"
+    ]
+    },
+    {
+    "Action": "BALANCE_POWER_DISTRIBUTION_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_MULTIPLY"
+    ]
+    },
+    {
+    "Action": "CARGO_SCOOP_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_SEMICOLON"
+    ]
+    },
+    {
+    "Action": "JETTISON_ALL_CARGO_SRV",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_APOSTROPHE"
+    ]
+    },
+    {
+    "Action": "RECALL_DISMISS_SHIP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_LBRACKET"
+    ]
+    },
+    {
+    "Action": "NIGHT_VISION",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_RBRACKET"
+    ]
+    },
+    {
+    "Action": "OPEN_GALAXYMAP",
+    "KeyStrokes": [
+        "DIK_LCONTROL",
+        "DIK_LALT",
+        "DIK_TAB"
+    ]
+    },
+    {
+    "Action": "OPEN_SYSTEMMAP",
+    "KeyStrokes": [
+    "DIK_LCONTROL",
+    "DIK_LALT",
+    "DIK_BACK"
+    ]
+    },
+    {
+    "Action": "FSA_MODE",
+    "KeyStrokes": [
+        "DIK_LCONTROL",
+        "DIK_LALT",
+        "DIK_EQUALS"
+    ]
+    },
+    {
+        "Action": "SRV_FIREGROUP_NEXT",
+        "KeyStrokes": [
+        "DIK_LCONTROL",
+        "DIK_LALT",
+        "DIK_MINUS"
+        ]
+    },
+    {
+        "Action": "SRV_FIREGROUP_PREVIOUS",
+        "KeyStrokes": [
+            "DIK_LCONTROL",
+            "DIK_LALT",
+            "DIK_0"
+        ]
+    }
+]
