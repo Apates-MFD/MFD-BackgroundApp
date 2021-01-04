@@ -27,7 +27,6 @@ namespace EDLibrary
         /// </summary>
         private void init()
         {           
-            Debug.Write("Controller init... ");
             interfaceHandler.ReloadConfig += InterfaceHandler_ReloadConfig;
             interfaceHandler.SaveConfig += InterfaceHandler_SaveConfig;
             controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings());
@@ -50,7 +49,6 @@ namespace EDLibrary
                 }));
                 EnableMenu(configurationHandler.GetMainMenu(), dev);
             }
-            Debug.WriteLine("done.");
         }
 
         /// <summary>

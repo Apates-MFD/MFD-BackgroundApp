@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="UI\resources\Transport_%28333%29.jpg" />
     <Resource Include="UI\Transport_(333).jpg" />
   </ItemGroup>
