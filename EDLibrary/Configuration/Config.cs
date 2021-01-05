@@ -15,5 +15,6 @@ namespace EDLibrary.Configuration
         public string PathToStatusFolder { get; set; }
         public string PathToConfiguration { get; set; }
         public Dictionary<string,double[]> WindowProperties { get; set; }
+        public Dictionary<string, Display.DisplaySettings> DisplaySettings { get; set; }
     }
 }

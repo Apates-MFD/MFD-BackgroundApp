@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using EDLibrary.Configuration.Display;
+
 namespace EDLibrary.Handlers
 {
     /// <summary>
@@ -159,6 +161,69 @@ namespace EDLibrary.Handlers
         public string GetPathToKeybindings()
         {
             return config.PathToConfiguration+"keybindings.json";
+        }
+
+        /// <summary>
+        /// Sets new display settings
+        /// </summary>
+        /// <param name="deviceName"></param>
+        /// <param name="settings"></param>
+        /// <param name="type"></param>
+        public void SetDisplaySetting(InputDeviceNames deviceName, DisplaySettingsValue settings, string type)
+        {
+            bool newEntry = true;
+            if (config.DisplaySettings == null)
+            {
+                config.DisplaySettings = new Dictionary<string, DisplaySettings>();
+            }
+            else
+            {
+                newEntry = !config.DisplaySettings.ContainsKey(deviceName.Value);
+            }
+            
+
+            switch (type)
+            {
+                case "NIGHT":
+                    if (newEntry)
+                    {
+                        config.DisplaySettings.Add(deviceName.Value, new DisplaySettings() { NightSettings = settings });
+                    }
+                    else
+                    {
+                        config.DisplaySettings[deviceName.Value].NightSettings = settings;
+                    }
+                    break;
+
+                case "DAY":
+                    if (newEntry)
+                    {
+                        config.DisplaySettings.Add(deviceName.Value, new DisplaySettings() { DaySettings = settings });
+                    }
+                    else
+                    {
+                        config.DisplaySettings[deviceName.Value].DaySettings = settings;
+                    }
+                    break;
+                default:
+                    throw new ArgumentException("Wrong type");
+            }
+
+            saveConfig();
+        }
+
+        public DisplaySettingsValue GetDisplaySettings(InputDeviceNames deviceName, string type)
+        {
+            if (!config.DisplaySettings.ContainsKey(deviceName.Value)) return null;
+            switch (type)
+            {
+                case "NIGHT":
+                    return config.DisplaySettings[deviceName.Value].NightSettings;
+                case "DAY":
+                    return config.DisplaySettings[deviceName.Value].DaySettings;
+                default:
+                    throw new ArgumentException("Wrong type");
+            }
         }
     }
 }

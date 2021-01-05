@@ -13,13 +13,15 @@ namespace EDLibrary.CommandFactory
         {
             IN_GAME,
             CHANGE_MENU,
-            SWAP_MENU
+            SWAP_MENU,
+            DISPLAY_SETTINGS
         }
 
         private static Dictionary<Type, commandTypes> commandTypeMap = new Dictionary<Type, commandTypes>(){
                 { typeof(InGameCommand), commandTypes.IN_GAME },
                 { typeof(ChangeMenuCommand), commandTypes.CHANGE_MENU},
-                { typeof(SwapCommand), commandTypes.SWAP_MENU}
+                { typeof(SwapCommand), commandTypes.SWAP_MENU},
+                { typeof(DisplaySettingsCommand), commandTypes.DISPLAY_SETTINGS }
         };
         
         /// <summary>
@@ -51,6 +53,15 @@ namespace EDLibrary.CommandFactory
 
                 case commandTypes.SWAP_MENU:
                     command = new SwapCommand();
+                    break;
+
+                case commandTypes.DISPLAY_SETTINGS:
+                    command = new DisplaySettingsCommand()
+                    {
+                        Type = serialized.ParameterValues[0],
+                        SubType = serialized.ParameterValues[1],
+                        Device = sender
+                    };
                     break;
             }
             return command;

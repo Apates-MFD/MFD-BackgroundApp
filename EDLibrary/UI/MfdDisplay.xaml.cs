@@ -25,13 +25,15 @@ namespace EDLibrary.UI
         private double brightnessStep = 0.2;
         private double contrastFactor = 1.0;
         private double contrastStep = 4;
+        private double symbology = 1.0;
+
 
         private TextBlock[] buttonTexts;
         private SolidColorBrush foregroundBrush;
         private SolidColorBrush backgroundBrush;
         private Color defaultForegroundColor;
         private Color defaultBackgroundColor;
-
+        
         private bool isInEditMode = false;
         public MfdDisplay()
         {
@@ -97,6 +99,9 @@ namespace EDLibrary.UI
             MinHeight = ActualHeight;
         }
 
+        /// <summary>
+        /// Clears all text from panel
+        /// </summary>
         private void clear()
         {
             foreach (TextBlock block in buttonTexts)
@@ -159,6 +164,11 @@ namespace EDLibrary.UI
             }));
         }
 
+        /// <summary>
+        /// Context menu edit mode click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditModeClick(object sender, RoutedEventArgs e)
         {
             isInEditMode = true;          
@@ -167,6 +177,12 @@ namespace EDLibrary.UI
             MaxHeight = double.PositiveInfinity;
             MinHeight = 0;
         }
+
+        /// <summary>
+        /// Context menu fixed mode click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FixedModeClick(object sender, RoutedEventArgs e)
         {
             isInEditMode = false;
@@ -175,10 +191,22 @@ namespace EDLibrary.UI
             MaxHeight = ActualHeight;
             MinHeight = ActualHeight;
         }
+
+        /// <summary>
+        /// Context menu save click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveConfigClick(object sender, RoutedEventArgs e)
         {
             if (SaveConfig != null) SaveConfig.Invoke(this, e);
         }
+
+        /// <summary>
+        /// Conext menu reload click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReloadConfigClick(object sender, RoutedEventArgs e)
         {
             if (ReloadConfig != null) ReloadConfig.Invoke(this, e);
@@ -206,18 +234,23 @@ namespace EDLibrary.UI
             Left = properties[3];
         }
 
+        /// <summary>
+        /// Context mode exit click (shutsdown application)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
         /// <summary>
         /// IncreaseBrightness
         /// </summary>
         public void IncreaseBrightness()
         {
             brightnessFactor += brightnessStep;
-            changeBrightness(defaultForegroundColor,foregroundBrush);
-            changeBrightness(defaultBackgroundColor, backgroundBrush);
+            updateDisplaySettings();
         }
 
         /// <summary>
@@ -227,8 +260,7 @@ namespace EDLibrary.UI
         {
             brightnessFactor -= brightnessStep;
             if (brightnessFactor < 0) brightnessFactor = 0;
-            changeBrightness(defaultForegroundColor, foregroundBrush);
-            changeBrightness(defaultBackgroundColor, backgroundBrush);
+            updateDisplaySettings();
         }
 
         /// <summary>
@@ -237,8 +269,7 @@ namespace EDLibrary.UI
         public void IncreaseContrast()
         {
             contrastFactor += contrastStep;
-            changeContrast(defaultForegroundColor, foregroundBrush);
-            changeContrast(defaultBackgroundColor, backgroundBrush);
+            updateDisplaySettings();
         }
 
         /// <summary>
@@ -248,8 +279,7 @@ namespace EDLibrary.UI
         {
             contrastFactor -= contrastStep;
             if (contrastFactor < 0) contrastFactor = 0;
-            changeContrast(defaultForegroundColor, foregroundBrush);
-            changeContrast(defaultBackgroundColor, backgroundBrush);
+            updateDisplaySettings();
         }
 
         /// <summary>
@@ -290,9 +320,44 @@ namespace EDLibrary.UI
             }));
         }
 
+        /// <summary>
+        /// Updates display to with the new settings
+        /// </summary>
+        private void updateDisplaySettings()
+        {
+            changeContrast(defaultForegroundColor, foregroundBrush);
+            changeContrast(defaultBackgroundColor, backgroundBrush);
+            changeBrightness(defaultForegroundColor, foregroundBrush);
+            changeBrightness(defaultBackgroundColor, backgroundBrush);
+        }
+        /// <summary>
+        /// When in edit mode window is dragable
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(isInEditMode)this.DragMove();
+        }
+
+        /// <summary>
+        /// Sends the current settings
+        /// </summary>
+        /// <returns>{ brightnessFactor, contrastFactor, symbology }</returns>
+        public double[] GetDisplaySetting()
+        {
+            return new[] { brightnessFactor, contrastFactor, symbology };
+        }
+
+        /// <summary>
+        /// Sets new settings { brightnessFactor, contrastFactor, symbology }
+        /// </summary>
+        public void SetDisplaySetting(double[] settings)
+        {
+            brightnessFactor = settings[0];
+            contrastFactor = settings[1];
+            symbology = settings[2];
+            updateDisplaySettings();
         }
     }
 }
