@@ -8,6 +8,7 @@ using EDLibrary.Menu;
 using EDLibrary.Handlers;
 using EDLibrary.UI;
 using System.Windows;
+using EDLibrary.Configuration.Display;
 
 namespace EDLibrary
 {
@@ -238,6 +239,43 @@ namespace EDLibrary
                 ChangeMenu(menu2.MenuInfo.MenuName, info1.AssignedInput);
                 ChangeMenu(menu1.MenuInfo.MenuName, info2.AssignedInput);
             }
+        }
+
+        /// <summary>
+        /// Loads settings from config file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="type"></param>
+        public void SetDisplaySettings(object sender, string type) 
+        {
+            InputDeviceNames name = (InputDeviceNames)sender;
+            DisplaySettingsValue value = configurationHandler.GetDisplaySettings(name, type);
+            if(value != null)
+            {
+                interfaceHandler.GetPanel(name).SetDisplaySetting(new[] { value.Brightness, value.Contrast, value.Symbology });
+            }
+        }
+
+        /// <summary>
+        /// Saves settings to configfile
+        /// </summary>
+        public void SaveDisplaySettings(object sender, string type)
+        {
+            InputDeviceNames name = (InputDeviceNames)sender;
+            double[] current = interfaceHandler.GetPanel(name).GetDisplaySetting();
+            configurationHandler.SetDisplaySetting(name, new DisplaySettingsValue() { Brightness = current[0], Contrast = current[1], Symbology = current[0] }, type);
+        }
+
+        /// <summary>
+        /// resets values to zero for display
+        /// </summary>
+        /// <param name="sender"></param>
+        public void ResetDisplaySetting(object sender, int type)
+        {
+            InputDeviceNames name = (InputDeviceNames)sender;
+            double[] current = interfaceHandler.GetPanel(name).GetDisplaySetting();
+            current[type] = 1.0;
+            interfaceHandler.GetPanel(name).SetDisplaySetting(current);
         }
 
         #region Singelton

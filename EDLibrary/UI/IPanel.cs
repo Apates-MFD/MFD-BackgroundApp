@@ -42,10 +42,35 @@
         /// <param name="porperty"></param>
         public void SetWindowProperty(double[] porperty);
 
+        /// <summary>
+        /// Increases Brightness
+        /// </summary>
         public void IncreaseBrightness();
+
+        /// <summary>
+        /// Decreases Brightness
+        /// </summary>
         public void DecreaseBrightness();
 
+        /// <summary>
+        /// Increases Contrast (Sort of)
+        /// </summary>
         public void IncreaseContrast();
+
+        /// <summary>
+        /// Decreases Contrast
+        /// </summary>
         public void DecreaseContrast();
+
+        /// <summary>
+        /// Gets the current brt, cond & sym value
+        /// </summary>
+        /// <returns></returns>
+        public double[] GetDisplaySetting();
+
+        /// <summary>
+        /// Sets the current brt, con & sym value
+        /// </summary>
+        public void SetDisplaySetting(double[] settings);
     }
 }
