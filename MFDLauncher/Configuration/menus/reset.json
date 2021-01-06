@@ -3,50 +3,93 @@
     {
         "DisplayText": "S NGT",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 19,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "SAVE",
+            "NIGHT"
+          ]
+        }
         },
         {
         "DisplayText": "S DAY",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 17,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "SAVE",
+            "DAY"
+          ]
+        }
         },
       {
         "DisplayText": "L DAY",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 7,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "LOAD",
+            "DAY"
+          ]
+        }
       },
       {
         "DisplayText": "L NGT",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 5,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "LOAD",
+            "NIGHT"
+          ]
+        }
       },
       {
         "DisplayText": "RST SYM",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 1,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "RESET",
+            "SYM"
+          ]
+        }
       },
       {
         "DisplayText": "RST BRT",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
-      },
-      {
-        "DisplayText": "RST GAIN",
-        "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 2,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "RESET",
+            "BRT"
+          ]
+        }
       },
       {
         "DisplayText": "RST CON",
         "State": false,
-        "Position": 15,
-        "LinkedProperty": null
+        "Position": 3,
+        "LinkedProperty": null,
+        "Command" :{
+          "CommandType": "EDLibrary.CommandFactory.DisplaySettingsCommand",
+          "ParameterValues":[
+            "RESET",
+            "CON"
+          ]
+        }
       },
       {
         "DisplayText": "SWAP",
