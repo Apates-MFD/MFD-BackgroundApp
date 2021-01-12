@@ -24,7 +24,7 @@ namespace EDLibrary.Handlers
         public ConfigurationHandler()
         {
             config = JsonConvert.DeserializeObject<Config>(File.ReadAllText("config.json"));
-            if (config.InputDevicesStrings.Count > 2 || config.InputDevicesStrings.Count < 0) throw new Exception("Invalid numbers of inputs");
+            if (config.InputDevicesStrings.Count > 2 || config.InputDevicesStrings.Count < 1) throw new Exception("Invalid numbers of inputs");
             List<InputDeviceNames> devices = new List<InputDeviceNames>(InputDeviceNames.GetAll());
             config.InputDevices = new List<InputDeviceNames>();
             config.InputDevicesStrings.ForEach(s =>
@@ -212,6 +212,12 @@ namespace EDLibrary.Handlers
             saveConfig();
         }
 
+        /// <summary>
+        /// Gets Settings
+        /// </summary>
+        /// <param name="deviceName"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public DisplaySettingsValue GetDisplaySettings(InputDeviceNames deviceName, string type)
         {
             if (!config.DisplaySettings.ContainsKey(deviceName.Value)) return null;
@@ -224,6 +230,24 @@ namespace EDLibrary.Handlers
                 default:
                     throw new ArgumentException("Wrong type");
             }
+        }
+
+        /// <summary>
+        /// Check if User wants to read status file
+        /// </summary>
+        /// <returns></returns>
+        public bool ReadingStatus()
+        {
+            return config.ReadStatus;
+        }
+
+        /// <summary>
+        /// Check if user wants to write to keyboard (or other output devices)
+        /// </summary>
+        /// <returns></returns>
+        public bool WritingOutput()
+        {
+            return config.WriteOutput;
         }
     }
 }

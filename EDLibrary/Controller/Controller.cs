@@ -17,8 +17,8 @@ namespace EDLibrary
     /// </summary>
     public class Controller
     {
-        private ConfigurationHandler configurationHandler = new ConfigurationHandler();
-        private InterfaceHandler interfaceHandler = new InterfaceHandler();
+        private ConfigurationHandler configurationHandler;
+        private InterfaceHandler interfaceHandler;
         private ControlHandler controlHandler;
         private StatusHandler statusHandler;
         private List<ActiveMenuInfo> activeMenus = new List<ActiveMenuInfo>();
@@ -27,12 +27,22 @@ namespace EDLibrary
         /// Init of Controller
         /// </summary>
         private void init()
-        {           
+        {
+
+            configurationHandler = new ConfigurationHandler();
+            controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings(), configurationHandler.WritingOutput());
+            controlHandler.MenuButtonPressed += ControlHandler_MenuButtonPressed;
+
+            interfaceHandler = new InterfaceHandler();
             interfaceHandler.ReloadConfig += InterfaceHandler_ReloadConfig;
             interfaceHandler.SaveConfig += InterfaceHandler_SaveConfig;
-            controlHandler = new ControlHandler(configurationHandler.GetPathToKeybindings());
-            controlHandler.MenuButtonPressed += ControlHandler_MenuButtonPressed;
-            statusHandler = new StatusHandler(configurationHandler.GetPathToStatusFolder());
+
+
+            if (configurationHandler.ReadingStatus())
+            {
+                statusHandler = new StatusHandler(configurationHandler.GetPathToStatusFolder());
+            }
+
             //Aquires Input Devices and setting mainmenu foreach device
             foreach(var dev in configurationHandler.GetInputDevices())
             {
@@ -140,7 +150,7 @@ namespace EDLibrary
                     commands.ForEach(c => this.executeCommand(c));
                 });
 
-                statusHandler.SubscribeTo(property, activeMenuInfo.Callback);
+                if(statusHandler != null) statusHandler.SubscribeTo(property, activeMenuInfo.Callback);
             }           
             activeMenus.Add(activeMenuInfo);
             AssignPanel(menu, activeMenuInfo.AssignedInput);
@@ -185,7 +195,7 @@ namespace EDLibrary
 
             foreach (string property in list)
             {
-                statusHandler.UnsubscribeFrom(property, menuInfo.Callback);
+                if (statusHandler != null)  statusHandler.UnsubscribeFrom(property, menuInfo.Callback);
             }
             interfaceHandler.GetPanel(menuInfo.AssignedInput).Clear();
             activeMenus.Remove(menuInfo);
