@@ -15,13 +15,14 @@ namespace EDLibrary.Handlers
     class ControlHandler
     {
         private static Dictionary<InputDeviceNames, EventHandler> acquiredDevices = new Dictionary<InputDeviceNames, EventHandler>();
+        private bool writeEnabled;
         private ControllRead readPipe;
         private ControllWrite writePipe;
         public event EventHandler MenuButtonPressed;
         /// <summary>
         /// Constructor
         /// </summary>
-        public ControlHandler(string pathToKeybindings)
+        public ControlHandler(string pathToKeybindings, bool enableWrite = true)
         {
             readPipe = (ControllRead)PipeController.Instance.GetPipe(nameof(ControllRead));
             if(readPipe == null)
@@ -38,6 +39,7 @@ namespace EDLibrary.Handlers
             }
 
             readPipe.DataReceived += DataReceived;
+            writeEnabled = enableWrite;
         }
 
         /// <summary>
@@ -68,7 +70,7 @@ namespace EDLibrary.Handlers
         /// <param name="actions"></param>
         public void Write(Actions actions)
         {
-            writePipe.Write(actions);
+            if(writeEnabled) writePipe.Write(actions);
         }
 
         /// <summary>
