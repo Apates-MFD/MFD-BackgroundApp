@@ -7,8 +7,10 @@ namespace MFDLauncher
         [STAThread]
         static void Main(string[] args)
         {
-            Application app = EDLibrary.Controller.Instance.GetApplication();
-            app.Run();           
+            _ = EDLibrary.Controller.Instance;
+            //Application app = EDLibrary.Controller.Instance.GetApplication();
+            // app.Run(); 
+            while (true) ;
         }
     }
 }

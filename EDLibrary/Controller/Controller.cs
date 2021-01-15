@@ -105,7 +105,7 @@ namespace EDLibrary
         /// <param name="e"></param>
         private void InterfaceHandler_SaveConfig(object sender, EventArgs e)
         {
-            IPanel panel = (MfdDisplay) sender;
+            IPanel panel = (IPanel) sender;
             configurationHandler.SaveWindowPosition(interfaceHandler.GetDeviceName(panel), panel.GetWindowProperty());
         }
 
@@ -116,7 +116,7 @@ namespace EDLibrary
         /// <param name="e"></param>
         private void InterfaceHandler_ReloadConfig(object sender, EventArgs e)
         {
-            IPanel panel = (MfdDisplay)sender;
+            IPanel panel = (IPanel)sender;
             panel.SetWindowProperty(configurationHandler.GetWindowPosition(interfaceHandler.GetDeviceName(panel)));
         }
 
@@ -228,10 +228,10 @@ namespace EDLibrary
         /// Return Applicaton
         /// </summary>
         /// <returns></returns>
-        public Application GetApplication()
+        /*public Application GetApplication()
         {
             return interfaceHandler.Application;
-        }
+        }*/
 
         /// <summary>
         /// Swaps the two displays

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	<UseWPF>true</UseWPF>
+	<UseWPF>false</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,32 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="UI\Transport_%28333%29.jpg" />
+    <Compile Remove="UI\MfdDisplay.xaml.cs" />
+    <Compile Remove="UI\WidhtToFontConverter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="UI\MfdDisplay.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="UI\MfdDisplay.xaml" />
+    <None Include="UI\MfdDisplay.xaml.cs" />
+    <None Include="UI\WidhtToFontConverter.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" />
-	 
+    <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" />	 
   </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="UI\resources\Transport_%28333%29.jpg" />
-    <Resource Include="UI\Transport_(333).jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="UI\MFD_TWO.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="UI\ResourceDic.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-	<Resource Include="UI\resources\Glass Gauge.ttf" />
-  </ItemGroup>
-
 </Project>

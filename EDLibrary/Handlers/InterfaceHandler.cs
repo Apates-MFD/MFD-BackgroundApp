@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using EDLibrary.ControllInput;
-using System.Windows.Threading;
+//using System.Windows.Threading;
 using System.Threading;
 
 namespace EDLibrary.Handlers
@@ -14,18 +14,18 @@ namespace EDLibrary.Handlers
     /// </summary>
     public class InterfaceHandler
     {
-        public Application Application { get; private set; }
+       // public Application Application { get; private set; }
         public event EventHandler ReloadConfig;
         public event EventHandler SaveConfig;
 
-        private Dictionary<InputDeviceNames, MfdDisplay> linkedPanels = new Dictionary<InputDeviceNames, MfdDisplay>();
-        private List<MfdDisplay> notShowedDisplays = new List<MfdDisplay>();
+        private Dictionary<InputDeviceNames, DisplayOutput> linkedPanels = new Dictionary<InputDeviceNames, DisplayOutput>();
+        private List<DisplayOutput> notShowedDisplays = new List<DisplayOutput>();
         private bool applicationRunning = false;
 
         public InterfaceHandler()
         {
-            Application = new Application();
-            Application.Startup += Application_Startup;
+           /* Application = new Application();
+            Application.Startup += Application_Startup;*/
         }
 
         /// <summary>
@@ -33,14 +33,14 @@ namespace EDLibrary.Handlers
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Application_Startup(object sender, StartupEventArgs e)
+       /* private void Application_Startup(object sender, StartupEventArgs e)
         {
             Application.Dispatcher.Invoke(new Action(() =>
             {
                 notShowedDisplays.ForEach(d => d.Show());
             }));
             applicationRunning = true;
-        }
+        }*/
 
         /// <summary>
         /// Returns panel
@@ -51,7 +51,7 @@ namespace EDLibrary.Handlers
         {
             if (linkedPanels.ContainsKey(device)) return linkedPanels[device];
             
-            MfdDisplay newDisplay = initDisplay();           
+            DisplayOutput newDisplay = initDisplay();           
             linkedPanels.Add(device, newDisplay);
             return newDisplay;
         }
@@ -74,18 +74,19 @@ namespace EDLibrary.Handlers
         /// Initial method for any display
         /// </summary>
         /// <returns></returns>
-        private MfdDisplay initDisplay()
+        private DisplayOutput initDisplay()
         {
-            MfdDisplay mfdDisplay = null;
-            Application.Dispatcher.Invoke(new Action(() =>
+            DisplayOutput DisplayOutput = null;
+            DisplayOutput = new DisplayOutput();
+            /*Application.Dispatcher.Invoke(new Action(() =>
             {
-                mfdDisplay = new MfdDisplay();
-            }));
-            mfdDisplay.Closed += MfdDisplay_Closed;
-            mfdDisplay.ReloadConfig += ReloadConfig;
-            mfdDisplay.SaveConfig += SaveConfig;
-            showDisplay(mfdDisplay);
-            return mfdDisplay;
+                DisplayOutput = new DisplayOutput();
+            }));*/
+            //DisplayOutput.Closed += DisplayOutput_Closed;
+            //DisplayOutput.ReloadConfig += ReloadConfig;
+            //DisplayOutput.SaveConfig += SaveConfig;
+            showDisplay(DisplayOutput);
+            return DisplayOutput;
         }
 
         /// <summary>
@@ -93,11 +94,11 @@ namespace EDLibrary.Handlers
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MfdDisplay_Closed(object sender, EventArgs e)
+        private void DisplayOutput_Closed(object sender, EventArgs e)
         {
             foreach(var pair in linkedPanels)
             {
-                if (pair.Value.Equals((MfdDisplay)sender))
+                if (pair.Value.Equals((DisplayOutput)sender))
                 {
                     linkedPanels.Remove(pair.Key);
                 }
@@ -107,20 +108,20 @@ namespace EDLibrary.Handlers
         /// <summary>
         /// showing display command
         /// </summary>
-        /// <param name="mfdDisplay"></param>
-        private void showDisplay(MfdDisplay mfdDisplay)
+        /// <param name="DisplayOutput"></param>
+        private void showDisplay(DisplayOutput DisplayOutput)
         {
 
             if (applicationRunning)
             {
-                Application.Dispatcher.Invoke(new Action(() =>
+                /*Application.Dispatcher.Invoke(new Action(() =>
                 {
-                    mfdDisplay.Show();
-                }));
+                    DisplayOutput.Show();
+                }));*/
             }
             else
             {
-                notShowedDisplays.Add(mfdDisplay);
+                notShowedDisplays.Add(DisplayOutput);
             }
         }
     }
