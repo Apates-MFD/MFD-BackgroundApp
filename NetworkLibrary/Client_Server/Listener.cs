@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 
 namespace NetworkLibrary
@@ -28,8 +26,6 @@ namespace NetworkLibrary
             {               
                 client = listener.AcceptTcpClient();
                 NetworkStream stream = client.GetStream();
-
-                int receivedBytes;
                 
                 while (!stop)
                 {
@@ -76,26 +72,6 @@ namespace NetworkLibrary
         public void Stop()
         {
             stop = true;
-        }
-    }
-
-    public class CommandReceivedEventArgs : EventArgs
-    {
-        public COMMAND_TYPES Command_type { get; set; }
-        public int Command { get; set; }
-        public object[] Args { get; set; }
-    }
-    public class Writer
-    {
-        private TcpClient client;
-        public Writer(string ipaddress)
-        {
-            client = new TcpClient(ipaddress,Listener.LISTENER_PORT);
-        }
-
-        public void write(byte[] data)
-        {
-            client.GetStream().Write(data, 0, data.Length);
         }
     }
 }
