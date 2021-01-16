@@ -11,9 +11,9 @@ namespace NetworkLibrary
         {
             byte[] p = Package.Create(COMMAND_TYPES.BUTTONS, COMMAND_BUTTONS.SET_TEXT, 14, "HELLO");
             object[] command = Package.Get(p);
-            /*Listener listener = new Listener("127.0.0.1");
+            Listener listener = new Listener("127.0.0.1");
             listener.CommandReceived += Listener_CommandReceived;
-            listener.Start();*/
+            listener.Start();
             Writer writer = new Writer("192.168.1.105");
             Console.WriteLine("Type\t\tCommand\t\tArguments");
             while (true)
