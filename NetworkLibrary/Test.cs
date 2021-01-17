@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NetworkLibrary.NetworkPackage.Commands;
+using System;
 using System.Threading;
 
 namespace NetworkLibrary
@@ -9,7 +8,7 @@ namespace NetworkLibrary
     {
         static void Main(string[] args)
         {
-            byte[] p = Package.Create(COMMAND_TYPES.BUTTONS, COMMAND_BUTTONS.SET_TEXT, 14, "HELLO");
+            byte[] p = Package.Create(Command_Types.BUTTONS, Commands_Button.SET_TEXT);
             object[] command = Package.Get(p);
            /* Listener listener = new Listener("127.0.0.1");
             listener.CommandReceived += Listener_CommandReceived;
@@ -25,12 +24,12 @@ namespace NetworkLibrary
 
         private static void Listener_CommandReceived(object sender, CommandReceivedEventArgs e)
         {
-            COMMAND_TYPES type = e.Command_type;
+            Command_Types type = e.Command_type;
             string command;
             switch (type)
             {
-                case COMMAND_TYPES.BUTTONS:
-                    command = ((COMMAND_BUTTONS)e.Command).ToString();
+                case Command_Types.BUTTONS:
+                    command = ((Commands_Button)e.Command).ToString();
                     break;
                 default: return;
             }

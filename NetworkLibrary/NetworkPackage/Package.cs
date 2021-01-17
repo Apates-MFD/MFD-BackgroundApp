@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NetworkLibrary.NetworkPackage.Commands;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace NetworkLibrary
 {
@@ -9,8 +9,7 @@ namespace NetworkLibrary
     {
         public static readonly byte MAGIC = 0b10101010;
         private static readonly byte HEADER_SIZE = 8;
-#nullable enable
-        public static byte[] Create(COMMAND_TYPES _command_type, COMMAND_BUTTONS _command, params object[]? args)
+        public static byte[] Create(Command_Types _command_type, Commands_Button _command, params object[] args)
         {
             int command_type = (int)_command_type;
             int command = (int)_command;
@@ -60,12 +59,11 @@ namespace NetworkLibrary
             return package;
 
         }
-#nullable disable
 
         public static object[] Get(byte[] package)
         {
-            COMMAND_TYPES command_type;
-            COMMAND_BUTTONS command;
+            Command_Types command_type;
+            Commands_Button command;
             object[] args = null;
 
             using(MemoryStream stream = new MemoryStream(package))
@@ -96,8 +94,8 @@ namespace NetworkLibrary
 
                 int cm = com_t_c & 0b00111111;
 
-                command_type = (COMMAND_TYPES)ct;
-                command = (COMMAND_BUTTONS)cm;
+                command_type = (Command_Types)ct;
+                command = (Commands_Button)cm;
 
                 //Parameter Count
                 byte parameter_count = reader.ReadByte();

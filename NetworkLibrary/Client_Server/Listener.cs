@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkLibrary.NetworkPackage.Commands;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -31,15 +32,15 @@ namespace NetworkLibrary
                 {
                     if(client.Available > 0)
                     {
-                        Span<byte> buffer = new byte[client.Available];
-                        stream.Read(buffer);
+                        byte[] buffer = new byte[client.Available];
+                        stream.Read(buffer,0,buffer.Length);
                         if (CommandReceived != null)
                         {
-                            object[] com = Package.Get(buffer.ToArray());
+                            object[] com = Package.Get(buffer);
 
                             CommandReceived.Invoke(this, new CommandReceivedEventArgs()
                             {
-                                Command_type = (COMMAND_TYPES)com[0],
+                                Command_type = (Command_Types)com[0],
                                 Command = (int)com[1],
                                 Args = (object[])com[2]
                             });
