@@ -3,7 +3,6 @@
     public enum COMMAND_TYPES
     {
         BUTTONS,
-        CENTER,
-        DEVICE
+        CENTER
     }
 }

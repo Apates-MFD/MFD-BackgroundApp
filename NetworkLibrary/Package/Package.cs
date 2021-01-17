@@ -112,9 +112,10 @@ namespace NetworkLibrary
                 for(int i = 0; i < parameter_count; i++)
                 {
                     if (reader.ReadByte() != Parameter.MAGIC) throw new Exception("Parameter magic mismatches");
+                    uint para_type_size = reader.ReadUInt32();
                     uint para_size = reader.ReadUInt32();
-                    byte[] param_arr = reader.ReadBytes((int)para_size);
-                    args[i] = Parameter.Get(param_arr);
+                    byte[] param_arr = reader.ReadBytes((int)(para_type_size+para_size));
+                    args[i] = Parameter.Get(para_type_size, para_size, param_arr);
                 }
 
                 return new object[] { command_type, command, args };
