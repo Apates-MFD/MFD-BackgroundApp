@@ -1,0 +1,148 @@
+{
+    "MenuItems": [
+      {
+        "DisplayText": "NEXT",
+        "State": false,
+        "Position": 15,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_NEXT_TARGET"]
+          }
+      },
+      {
+        "DisplayText": "PREV",
+        "State": false,
+        "Position": 16,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_PREVIOUS_SHIP"]
+          }
+      },
+      {
+        "DisplayText": "NSUB",
+        "State": false,
+        "Position": 8,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_NEXT_SUBSYSTEM"]
+          }
+      },
+      {
+        "DisplayText": "PSUB",
+        "State": false,
+        "Position": 9,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["CYCLE_PREVIOUS_SUBSYSTEM"]
+          }
+      },
+      {
+        "DisplayText": "NSYS",
+        "State": false,
+        "Position": 5,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["TARGET_NEXT_SYSTEM_IN_ROUTE"]
+          }
+      },
+      {
+        "DisplayText": "GALA",
+        "State": false,
+        "Position": 4,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["OPEN_GALAXYMAP"]
+          }
+      },
+      {
+        "DisplayText": "SYST",
+        "State": false,
+        "Position": 3,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["OPEN_SYSTEMMAP"]
+          }
+      },
+      {
+        "DisplayText": "FSA",
+        "State": false,
+        "Position": 2,
+        "LinkedProperty": null,
+        "Command": {
+            "CommandType": "BackgroundLibrary.CommandFactory.InGameCommand",       
+            "ParameterValues": ["FSA_MODE"]
+          }
+      },
+      {
+        "DisplayText": "SWAP",
+        "State": false,
+        "Position": 14,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.SwapCommand"
+        }
+      },
+      {
+        "DisplayText": "FLCS",
+        "State": false,
+        "Position": 13,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "FLCS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SLMP",
+        "State": false,
+        "Position": 12,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SLMP"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SMS",
+        "State": false,
+        "Position": 11,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SMS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "NAV",
+        "State": false,
+        "Position": 10,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "NAV"
+          ]
+        }
+      }
+    
+    ],
+    "MenuInfo": {
+      "Description": "Navigation System",
+      "MenuName": "NAV"
+    },
+    "MenuDisplay": {}
+  }    
+              

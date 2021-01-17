@@ -1,0 +1,165 @@
+{
+    "MenuItems": [
+        {
+            "DisplayText": "SRV",
+            "State": false,
+            "Position": 19,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "SRV"
+              ]
+            }
+          },
+          {
+            "DisplayText": "FLCS",
+            "State": false,
+            "Position": 9,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "FLCS"
+              ]
+            }
+          },
+          {
+            "DisplayText": "SMS",
+            "State": false,
+            "Position": 5,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "SMS"
+              ]
+            }
+          },
+          {
+            "DisplayText": "WPN",
+            "State": false,
+            "Position": 17,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "WPN"
+              ]
+            }
+          },
+          {
+            "DisplayText": "NAV",
+            "State": false,
+            "Position": 16,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "NAV"
+              ]
+            }
+          },
+          {
+            "DisplayText": "HUD",
+            "State": false,
+            "Position": 6,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "HUD"
+              ]
+            }
+          },
+          {
+            "DisplayText": "RESET MENU",
+            "State": false,
+            "Position": 4,
+            "LinkedProperty": null,
+            "Command": {
+              "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+              "ParameterValues":[
+                "RESETMENU"
+              ]
+            }
+          },
+      {
+        "DisplayText": "SWAP",
+        "State": false,
+        "Position": 14,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.SwapCommand"
+        }
+      },
+      {
+        "DisplayText": "FLCS",
+        "State": false,
+        "Position": 13,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "FLCS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SLMP",
+        "State": false,
+        "Position": 12,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SLMP"
+          ]
+        }
+      },
+      {
+        "DisplayText": "SMS",
+        "State": false,
+        "Position": 11,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "SMS"
+          ]
+        }
+      },
+      {
+        "DisplayText": "NAV",
+        "State": false,
+        "Position": 10,
+        "LinkedProperty": null,
+        "Command": {
+          "CommandType": "BackgroundLibrary.CommandFactory.ChangeMenuCommand",
+          "ParameterValues":[
+            "NAV"
+          ]
+        }
+      }
+    
+    ],
+    "MenuInfo": {
+      "Description": "Main Menu",
+      "MenuName": "SLMP"
+    },
+    "MenuDisplay": {}
+  }
+  
+   
+               
+               
+               
+               
+               
+               
+               
+               
+               
+              
+              
+              
